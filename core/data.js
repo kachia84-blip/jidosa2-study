@@ -8,6 +8,7 @@ export function mergeData(qJson, aJson) {
       parts,
       status: answer?.status ?? "없음",
       note: answer?.note ?? "",
+      outline: answer?.outline ?? null,
       total: parts.reduce((sum, part) => sum + part.items.length, 0),
     };
   });

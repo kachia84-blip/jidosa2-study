@@ -136,6 +136,9 @@ details > p { padding: 0 4px 8px; }
 .answer-list > li { margin-bottom: 20px; padding-left: 4px; }
 .answer-list p { margin-bottom: 10px; }
 .mnemonic { padding: 10px 14px; border-radius: 10px; background: var(--primary-soft); }
+.mnemonic p { margin: 4px 0; }
+.phrase { font-weight: 600; }
+.story, .outline { margin: 8px 0; padding: 8px 12px; border-left: 3px solid var(--primary-soft); line-height: 1.6; }
 .hole {
   display: inline-block;
   min-width: 2ch;

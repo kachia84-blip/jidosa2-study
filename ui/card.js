@@ -62,6 +62,33 @@ function appendBasis(parent, part) {
   parent.append(details);
 }
 
+// 두문자·외우기 문장·이야기. open=false면 힌트처럼 눌러야 보인다.
+function appendAids(parent, part, open, hideMnemonic = false) {
+  if (part.mnemonic && hideMnemonic) {
+    parent.append(disclosure("두문자 힌트", [part.mnemonic, part.phrase].filter(Boolean).join(" / ")));
+  } else if (part.mnemonic) {
+    const box = el("div", null, "mnemonic");
+    box.append(el("p", `두문자: ${part.mnemonic}`));
+    if (part.phrase) box.append(open ? el("p", part.phrase, "phrase") : disclosure("외우기 문장", part.phrase));
+    parent.append(box);
+  }
+  if (part.story) {
+    const details = disclosure("현장 이야기", part.story);
+    details.className = "story";
+    details.open = open;
+    parent.append(details);
+  }
+}
+
+function appendOutline(container, item, key, open) {
+  const text = item.outline?.[key];
+  if (!text) return;
+  const details = disclosure(key === "intro" ? "서론 한 줄" : "결론 한 줄", text);
+  details.className = "outline";
+  details.open = open;
+  container.append(details);
+}
+
 function recallToggle(key, missed) {
   const toggle = button("떠올림", () => {
     if (missed.has(key)) missed.delete(key);
@@ -77,6 +104,7 @@ function recallToggle(key, missed) {
 }
 
 function fullAnswers(container, item, missed = null) {
+  appendOutline(container, item, "intro", true);
   item.parts.forEach((part, partIndex) => {
     const section = el("section", null, "answer-part");
     if (part.label) section.append(el("h2", part.label));
@@ -88,10 +116,11 @@ function fullAnswers(container, item, missed = null) {
       list.append(li);
     });
     section.append(list);
-    if (part.mnemonic) section.append(el("p", `두문자: ${part.mnemonic}`, "mnemonic"));
+    appendAids(section, part, true);
     appendBasis(section, part);
     container.append(section);
   });
+  appendOutline(container, item, "outro", true);
 }
 
 function hole(segment) {
@@ -109,6 +138,7 @@ function hole(segment) {
 
 function maskedAnswers(container, item, stage) {
   if (stage === 4) container.append(el("p", `${item.total}가지를 모두 떠올려 보세요.`, "notice"));
+  appendOutline(container, item, "intro", false);
   item.parts.forEach(part => {
     const masked = maskPart(part, stage);
     const section = el("section", null, "answer-part");
@@ -122,10 +152,11 @@ function maskedAnswers(container, item, stage) {
         list.append(line);
       });
       section.append(list);
-      if (masked.mnemonic) section.append(el("p", `두문자: ${masked.mnemonic}`, "mnemonic"));
     }
+    appendAids(section, part, false, !masked.mnemonic);
     container.append(section);
   });
+  appendOutline(container, item, "outro", false);
 }
 
 function showSummary(root, ctx, session) {
