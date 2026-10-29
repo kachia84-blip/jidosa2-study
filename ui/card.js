@@ -89,6 +89,21 @@ function appendOutline(container, item, key, open) {
   container.append(details);
 }
 
+// 쉬운 풀이(초보용 설명)와 모범 답안(답안지에 옮겨 쓸 글).
+function appendWritten(container, item, easyOpen) {
+  if (item.easy) {
+    const easy = disclosure("쉬운 풀이", item.easy);
+    easy.className = "written";
+    easy.open = easyOpen;
+    container.append(easy);
+  }
+  if (item.model) {
+    const model = disclosure("모범 답안", item.model);
+    model.className = "written";
+    container.append(model);
+  }
+}
+
 function recallToggle(key, missed) {
   const toggle = button("떠올림", () => {
     if (missed.has(key)) missed.delete(key);
@@ -103,7 +118,7 @@ function recallToggle(key, missed) {
   return toggle;
 }
 
-function fullAnswers(container, item, missed = null) {
+function fullAnswers(container, item, missed = null, easyOpen = false) {
   appendOutline(container, item, "intro", true);
   item.parts.forEach((part, partIndex) => {
     const section = el("section", null, "answer-part");
@@ -121,6 +136,7 @@ function fullAnswers(container, item, missed = null) {
     container.append(section);
   });
   appendOutline(container, item, "outro", true);
+  appendWritten(container, item, easyOpen);
 }
 
 function hole(segment) {
@@ -199,7 +215,7 @@ function finishReading(root, ctx, session, item, card, action, status) {
 
 function showReading(container, root, ctx, session, item, card) {
   container.replaceChildren(el("h2", "단계 1 보기"));
-  fullAnswers(container, item);
+  fullAnswers(container, item, null, true);
   const status = el("p", "", "muted");
   status.setAttribute("role", "status");
   const action = button("다 읽었어요", () =>

@@ -41,7 +41,7 @@ test("mergeData: 답안이 없는 문항의 기본값과 Map 참조, 주제 등�
   assert.deepEqual(data.topics, ["굴착", "안전"]);
   assert.ok(data.byId instanceof Map);
   for (const item of data.items) assert.equal(data.byId.get(item.id), item);
-  assert.deepEqual(data.byId.get("q2"), { ...questions.items[1], parts: [], status: "없음", note: "", outline: null, total: 0 });
+  assert.deepEqual(data.byId.get("q2"), { ...questions.items[1], parts: [], status: "없음", note: "", outline: null, model: "", easy: "", total: 0 });
   assert.equal(data.byId.has("orphan"), false);
 });
 
