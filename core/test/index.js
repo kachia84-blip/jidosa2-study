@@ -1,0 +1,6 @@
+// `node --test test` 명령에서 폴더를 테스트 진입점으로 사용한다.
+import "./data.test.mjs";
+import "./store.test.mjs";
+import "./srs.test.mjs";
+import "./mask.test.mjs";
+import "./confidence.test.mjs";
