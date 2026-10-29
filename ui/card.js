@@ -71,6 +71,27 @@ function appendBasis(parent, part) {
   parent.append(details);
 }
 
+// 외부 모범답안·지침에서 찾은 보완 항목. 다른 답이면 표시하고 출처 링크를 단다.
+function appendExtra(parent, part) {
+  if (!part.extra?.length) return;
+  const details = el("details", null, "extra");
+  details.append(el("summary", `더 알아두기 ${part.extra.length}개`));
+  const list = el("ul");
+  part.extra.forEach(extra => {
+    const li = el("li");
+    if (extra.alt) li.append(el("span", "다른 답", "badge"));
+    li.append(el("span", ` ${extra.text}`), el("p", extra.why, "muted"));
+    const link = el("a", "출처 열기", "btn basis-link");
+    link.href = extra.src;
+    link.target = "_blank";
+    link.rel = "noopener";
+    li.append(link);
+    list.append(li);
+  });
+  details.append(list);
+  parent.append(details);
+}
+
 // 두문자·외우기 문장·이야기. open=false면 힌트처럼 눌러야 보인다.
 function appendAids(parent, part, open, hideMnemonic = false) {
   if (part.mnemonic && hideMnemonic) {
@@ -142,6 +163,7 @@ function fullAnswers(container, item, missed = null, easyOpen = false) {
     section.append(list);
     appendAids(section, part, true);
     appendBasis(section, part);
+    appendExtra(section, part);
     container.append(section);
   });
   appendOutline(container, item, "outro", true);
