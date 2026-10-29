@@ -2,6 +2,7 @@ import { dayKey, getCard } from "../core/store.js";
 import { gradeOf, nextStage, review } from "../core/srs.js";
 import { countHint, maskPart } from "../core/mask.js";
 import { CONF, recordResult } from "../core/confidence.js";
+import { basisPieces } from "../core/basis.js";
 
 const STAGES = ["", "보기", "빈칸", "앞글자", "백지"];
 const CONF_LABELS = { sure: "확신", unsure: "애매", none: "모름" };
@@ -57,7 +58,15 @@ function appendBasis(parent, part) {
   if (!part.basis && !part.verified) return;
   const details = el("details", null, "basis");
   details.append(el("summary", "근거"));
-  if (part.basis) details.append(el("p", part.basis, "preserve"));
+  basisPieces(part.basis).forEach(piece => {
+    if (piece.t === "link") {
+      const link = el("a", piece.s, "btn basis-link");
+      link.href = piece.href;
+      link.target = "_blank";
+      link.rel = "noopener";
+      details.append(link);
+    } else details.append(el("p", piece.s, piece.t === "note" ? "muted" : "preserve"));
+  });
   if (part.verified) details.append(el("span", "원문 확인", "badge"));
   parent.append(details);
 }
