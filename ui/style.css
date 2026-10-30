@@ -286,3 +286,43 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 .ladder-bar[hidden], .rt-chunk[hidden] { display: none; }
 @media (prefers-reduced-motion: reduce) { .rt-chunk { animation: none; } }
 .tab-ico { margin-right: 6px; }
+
+/* 시험 일정 */
+.sched-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 8px 0 12px; padding: 12px 14px; border-radius: 12px; background: var(--primary-soft); }
+.sched-big { color: var(--primary); font-size: 1.8rem; font-weight: 700; }
+.sched-list { margin: 6px 0; padding: 0; list-style: none; }
+.sched-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.sched-dday { min-width: 4.6em; color: var(--primary); font-variant-numeric: tabular-nums; }
+.sched-name { flex: 1 1 8em; }
+.sched-date { color: var(--muted); font-size: .9rem; }
+.sched-row.exam .sched-name { color: var(--primary); }
+.sched-note { margin-top: 10px; font-size: .8rem; }
+
+/* 통계: 내 성적·약한 분야·출제 경향 */
+.stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 10px 0 14px; }
+.stat { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 10px; background: var(--primary-soft); }
+.stat-value { color: var(--primary); font-size: 1.4rem; font-weight: 700; }
+.stat-label { color: var(--muted); font-size: .85rem; }
+.panel h3 { margin: 14px 0 6px; font-size: 1rem; }
+.spark { display: flex; align-items: flex-end; gap: 3px; height: 110px; padding-bottom: 18px; }
+.spark-col { position: relative; display: flex; flex: 1; flex-direction: column; justify-content: flex-end; height: 100%; }
+.spark-bar { border-radius: 4px 4px 0 0; background: var(--primary); }
+.spark-bar.empty { background: var(--fresh); }
+.spark-day { position: absolute; bottom: -18px; width: 100%; color: var(--muted); font-size: .7rem; text-align: center; }
+.meter { flex: 1; height: 12px; overflow: hidden; border-radius: 6px; background: var(--fresh); }
+.meter-fill { height: 100%; border-radius: 6px; background: var(--primary); }
+.meter-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+.meter-name { min-width: 3.5em; }
+.meter-value { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+.weak-list { margin: 8px 0; padding-left: 22px; }
+.weak-row { margin-bottom: 16px; }
+.weak-row .meter { margin: 6px 0; }
+.weak-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px; }
+.weak-name { font-weight: 600; }
+.btn.small { min-height: 36px; padding: 4px 12px; font-size: .9rem; }
+.trend-row { margin: 12px 0; }
+.year-strip { display: grid; grid-template-columns: repeat(14, 1fr); gap: 3px; margin: 6px 0 2px; }
+.year-cell { display: flex; align-items: center; justify-content: center; height: 20px; border-radius: 4px; background: var(--fresh); color: var(--primary-text); font-size: .7rem; }
+.year-cell.on { background: var(--primary); }
+.year-strip.axis .year-cell { height: auto; background: none; color: var(--muted); }
+@media (min-width: 560px) { .stats-row { grid-template-columns: repeat(4, 1fr); } }

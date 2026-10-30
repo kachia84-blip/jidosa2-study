@@ -6,3 +6,5 @@ import "./mask.test.mjs";
 import "./confidence.test.mjs";
 import "./basis.test.mjs";
 import "./richtext.test.mjs";
+import "./schedule.test.mjs";
+import "./insights.test.mjs";

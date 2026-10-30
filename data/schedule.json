@@ -1,0 +1,22 @@
+{
+ "source": "한국산업인력공단 2026년도 국가전문자격 시행일정(사전공고). 2027년은 공고 전이라 2026년과 같은 요일로 계산한 예상치",
+ "link": "https://www.q-net.or.kr",
+ "events": [
+  {"round": 16, "name": "1차 원서접수", "start": "2026-02-23", "end": "2026-02-27"},
+  {"round": 16, "name": "1차 시험", "start": "2026-03-28", "exam": true},
+  {"round": 16, "name": "1차 합격 발표", "start": "2026-04-29"},
+  {"round": 16, "name": "2·3차 원서접수", "start": "2026-05-11", "end": "2026-05-15"},
+  {"round": 16, "name": "2차 시험", "start": "2026-06-06", "exam": true},
+  {"round": 16, "name": "2차 합격 발표", "start": "2026-07-22"},
+  {"round": 16, "name": "3차 면접", "start": "2026-08-12", "end": "2026-08-15"},
+  {"round": 16, "name": "최종 합격 발표", "start": "2026-09-23"},
+  {"round": 17, "name": "1차 원서접수", "start": "2027-02-22", "end": "2027-02-26", "estimate": true},
+  {"round": 17, "name": "1차 시험", "start": "2027-03-27", "exam": true, "estimate": true},
+  {"round": 17, "name": "1차 합격 발표", "start": "2027-04-28", "estimate": true},
+  {"round": 17, "name": "2·3차 원서접수", "start": "2027-05-10", "end": "2027-05-14", "estimate": true},
+  {"round": 17, "name": "2차 시험", "start": "2027-06-05", "exam": true, "estimate": true},
+  {"round": 17, "name": "2차 합격 발표", "start": "2027-07-21", "estimate": true},
+  {"round": 17, "name": "3차 면접", "start": "2027-08-11", "end": "2027-08-14", "estimate": true},
+  {"round": 17, "name": "최종 합격 발표", "start": "2027-09-22", "estimate": true}
+ ]
+}

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { review, retrievability, gradeOf, nextStage, interleave, pickToday } from "../srs.js";
+import { pairUp, review, retrievability, gradeOf, nextStage, interleave, pickToday } from "../srs.js";
 import { loadState, getCard, dayKey } from "../store.js";
 
 const DAY = 86_400_000;
@@ -189,4 +189,13 @@ test("pickToday: 읽기만 끝낸 문항은 이어서 하고 새 문항으로 �
   getCard(state, "a").stage = 2;
   getCard(state, "b").stage = 2;
   assert.deepEqual(pickToday(items, state, now), { due: [], started: ["a", "b"], fresh: ["c"] });
+});
+
+test("pickToday: 새 문항은 같은 주제 2개씩 짝, 짝끼리는 주제를 돌아가며", () => {
+  const state = loadState({ getItem: () => null });
+  state.settings.newPerDay = 5;
+  const items = [["a1", "A"], ["a2", "A"], ["a3", "A"], ["b1", "B"], ["b2", "B"], ["b3", "B"], ["c1", "C"]]
+    .map(([id, topic]) => ({ id, topic, status: "확정" }));
+  assert.deepEqual(pickToday(items, state, now).fresh, ["a1", "a2", "b1", "b2", "c1"]);
+  assert.deepEqual(pairUp(["a1", "a2", "a3", "b1"], id => id[0]), ["a1", "a2", "b1", "a3"]);
 });

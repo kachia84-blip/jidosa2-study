@@ -107,6 +107,20 @@ export function interleave(ids, topicOf) {
   return arrange(ids, topicOf, Symbol("시작"));
 }
 
+// 새 문항: 같은 주제 2개씩 짝으로(처음 익히기 쉽게), 짝끼리는 주제를 돌아가며(구별력) 놓는다.
+export function pairUp(ids, topicOf, size = 2) {
+  const groups = new Map();
+  ids.forEach(id => {
+    if (!groups.has(topicOf(id))) groups.set(topicOf(id), []);
+    groups.get(topicOf(id)).push(id);
+  });
+  const result = [];
+  while (result.length < ids.length) {
+    for (const group of groups.values()) result.push(...group.splice(0, size));
+  }
+  return result;
+}
+
 export function pickToday(items, state, now) {
   const byId = new Map(items.map(item => [item.id, item]));
   const topicOf = id => byId.get(id).topic;
@@ -127,6 +141,7 @@ export function pickToday(items, state, now) {
   const fresh = items.filter(item => !cardOf(item.id)?.fsrs && !read(item))
     .sort((a, b) => Number(b.status === "확정") - Number(a.status === "확정")
       || compare(a.topic, b.topic) || compare(a.id, b.id))
-    .slice(0, limit).map(item => item.id);
-  return { due: [...urgent, ...regular], started, fresh };
+    .map(item => item.id);
+  const freshPicked = pairUp(fresh, topicOf).slice(0, limit);
+  return { due: [...urgent, ...regular], started, fresh: freshPicked };
 }

@@ -1,6 +1,7 @@
 import { withIcon } from "./icons.js";
 import { isMemorized } from "../core/store.js";
 import { CONF, calibration, illusions, weakItems } from "../core/confidence.js";
+import { showMyScore, showWeakTopics, showExamTrends } from "./insights.js";
 
 function el(tag, text, className) {
   const node = document.createElement(tag);
@@ -122,6 +123,9 @@ function showWeakItems(root, ctx) {
 export function render(root, ctx) {
   root.replaceChildren();
   showProgress(root, ctx);
+  showMyScore(root, ctx);
+  showWeakTopics(root, ctx);
+  showExamTrends(root, ctx);
   showCalibration(root, ctx.state);
   showIllusions(root, ctx);
   showWeakItems(root, ctx);

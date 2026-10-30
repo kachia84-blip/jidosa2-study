@@ -2,6 +2,7 @@ import { withIcon } from "./icons.js";
 import { dayKey, exportState, importState, isMemorized } from "../core/store.js";
 import { pickToday } from "../core/srs.js";
 import { illusions } from "../core/confidence.js";
+import { showSchedule } from "./schedule.js";
 
 function el(tag, text, className) {
   const node = document.createElement(tag);
@@ -156,5 +157,6 @@ export function render(root, ctx) {
   const today = pickToday(ctx.data.items, ctx.state, now);
   showOverview(root, ctx, today, now);
   showIllusions(root, ctx);
+  showSchedule(root);
   showSettings(root, ctx);
 }
