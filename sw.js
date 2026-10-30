@@ -1,9 +1,10 @@
 // 앱 껍데기는 캐시 우선, data/는 네트워크 우선(답안 수정이 바로 반영되게)
-const CACHE = "jd2-v6";
+const CACHE = "jd2-v8";
 const SHELL = [
   "./", "index.html", "app.js", "router.js", "manifest.webmanifest", "icon.svg",
-  "core/data.js", "core/store.js", "core/srs.js", "core/mask.js", "core/confidence.js", "core/basis.js",
-  "ui/today.js", "ui/card.js", "ui/browse.js", "ui/stats.js", "ui/style.css",
+  "core/data.js", "core/store.js", "core/srs.js", "core/mask.js", "core/confidence.js", "core/basis.js", "core/richtext.js", "ui/rich.js",
+  "ui/today.js", "ui/card.js", "ui/browse.js", "ui/stats.js", "ui/style.css", "ui/icons.js",
+  "fonts/fonts.css", "fonts/pretendard.woff2", "fonts/tf00.woff2", "fonts/tf02.woff2", "fonts/tf07.woff2", "fonts/tf08.woff2", "fonts/tf09.woff2", "fonts/tf10.woff2",
   "data/questions.json", "data/answers.json",
 ];
 

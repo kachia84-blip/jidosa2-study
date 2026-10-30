@@ -3,6 +3,8 @@ import { gradeOf, nextStage, review } from "../core/srs.js";
 import { countHint, maskPart } from "../core/mask.js";
 import { CONF, recordResult } from "../core/confidence.js";
 import { basisPieces } from "../core/basis.js";
+import { richText, studyLadder } from "./rich.js";
+import { withIcon } from "./icons.js";
 
 const STAGES = ["", "보기", "빈칸", "앞글자", "백지"];
 const CONF_LABELS = { sure: "확신", unsure: "애매", none: "모름" };
@@ -23,7 +25,7 @@ function button(text, action, className = "btn") {
 
 function disclosure(label, text) {
   const details = el("details");
-  details.append(el("summary", label), el("p", text, "preserve"));
+  details.append(el("summary", withIcon(label)), el("p", text, "preserve"));
   return details;
 }
 
@@ -57,7 +59,7 @@ function showHeader(view, session, item, card) {
 function appendBasis(parent, part) {
   if (!part.basis && !part.verified) return;
   const details = el("details", null, "basis");
-  details.append(el("summary", "근거"));
+  details.append(el("summary", withIcon("근거")));
   basisPieces(part.basis).forEach(piece => {
     if (piece.t === "link") {
       const link = el("a", piece.s, "btn basis-link");
@@ -75,7 +77,7 @@ function appendBasis(parent, part) {
 function appendExtra(parent, part) {
   if (!part.extra?.length) return;
   const details = el("details", null, "extra");
-  details.append(el("summary", `더 알아두기 ${part.extra.length}개`));
+  details.append(el("summary", withIcon(`더 알아두기 ${part.extra.length}개`)));
   const list = el("ul");
   part.extra.forEach(extra => {
     const li = el("li");
@@ -120,9 +122,16 @@ function appendOutline(container, item, key, open) {
 }
 
 // 암기 지도: 키워드 → 큰 흐름 → 세부 흐름 → 근거 → 암기법 → 셀프 테스트.
+function richDisclosure(label, text) {
+  const details = el("details");
+  details.append(el("summary", withIcon(label)), richText(text));
+  return details;
+}
+
 function appendStudy(container, item, open) {
   if (!item.study) return;
-  const study = disclosure("암기 지도", item.study);
+  const study = el("details");
+  study.append(el("summary", withIcon("암기 지도")), studyLadder(item.study));
   study.className = "written study";
   study.open = open;
   container.append(study);
@@ -131,13 +140,13 @@ function appendStudy(container, item, open) {
 // 쉬운 풀이(초보용 설명)와 모범 답안(답안지에 옮겨 쓸 글).
 function appendWritten(container, item, easyOpen) {
   if (item.easy) {
-    const easy = disclosure("쉬운 풀이", item.easy);
+    const easy = richDisclosure("쉬운 풀이", item.easy);
     easy.className = "written";
     easy.open = easyOpen;
     container.append(easy);
   }
   if (item.model) {
-    const model = disclosure("모범 답안", item.model);
+    const model = richDisclosure("모범 답안", item.model);
     model.className = "written";
     container.append(model);
   }
@@ -218,7 +227,7 @@ function maskedAnswers(container, item, stage) {
 
 function showSummary(root, ctx, session) {
   const elapsed = Math.max(0, Math.floor((ctx.now() - session.started) / 1000));
-  root.replaceChildren(el("h1", "공부를 마쳤어요"),
+  root.replaceChildren(el("h1", withIcon("공부를 마쳤어요")),
     el("p", `통과 ${session.passed} / 전체 ${session.total}`),
     el("p", `걸린 시간 ${Math.floor(elapsed / 60)}분 ${elapsed % 60}초`, "muted"),
     el("p", "10~15분 했으면 5분 쉬세요.", "notice"),

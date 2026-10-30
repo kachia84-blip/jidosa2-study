@@ -5,3 +5,4 @@ import "./srs.test.mjs";
 import "./mask.test.mjs";
 import "./confidence.test.mjs";
 import "./basis.test.mjs";
+import "./richtext.test.mjs";

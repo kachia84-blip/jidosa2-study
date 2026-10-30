@@ -1,0 +1,8 @@
+/* 프리텐다드(Pretendard, SIL OFL 1.1, https://github.com/orioncactus/pretendard)와 토스페이스(Tossface, https://github.com/toss/tossface) — 앱에서 쓰는 글자만 남긴 조각. tools/fonts_sub.py 가 만듦 */
+@font-face{font-family:"Pretendard";src:url("pretendard.woff2") format("woff2");font-weight:45 920;font-display:swap}
+@font-face{font-family:"Tossface";src:url("tf00.woff2") format("woff2");font-display:swap;unicode-range:U+270D, U+1F9E0, U+FE0F, U+200D}
+@font-face{font-family:"Tossface";src:url("tf02.woff2") format("woff2");font-display:swap;unicode-range:U+2696, U+FE0F, U+200D}
+@font-face{font-family:"Tossface";src:url("tf07.woff2") format("woff2");font-display:swap;unicode-range:U+1F423, U+1F5FA, U+FE0F, U+200D}
+@font-face{font-family:"Tossface";src:url("tf08.woff2") format("woff2");font-display:swap;unicode-range:U+2795, U+1F3B5, U+1F3D7, U+1F524, U+FE0F, U+200D}
+@font-face{font-family:"Tossface";src:url("tf09.woff2") format("woff2");font-display:swap;unicode-range:U+1F389, U+1F3AC, U+1F3AF, U+1F4A1, U+1F4C5, U+1F4CA, U+1F4D6, U+1F4DA, U+1F4DD, U+1F511, U+1F5D2, U+1F6AA, U+1F9E9, U+1F9ED, U+1FA9C, U+FE0F, U+200D}
+@font-face{font-family:"Tossface";src:url("tf10.woff2") format("woff2");font-display:swap;unicode-range:U+1F3C1, U+FE0F, U+200D}

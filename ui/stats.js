@@ -1,3 +1,4 @@
+import { withIcon } from "./icons.js";
 import { isMemorized } from "../core/store.js";
 import { CONF, calibration, illusions, weakItems } from "../core/confidence.js";
 
@@ -39,7 +40,7 @@ function bar(values, label, all = true) {
 function showProgress(root, ctx) {
   const totals = counts(ctx.data.items, ctx.state);
   const label = `외운 문항 ${totals.done}/${totals.total} · ${ratio(totals.done, totals.total)}%`;
-  root.append(el("h1", "학습 통계"), el("p", label), bar(totals, label, false));
+  root.append(el("h1", withIcon("학습 통계")), el("p", label), bar(totals, label, false));
   const section = el("section", null, "panel");
   section.append(el("h2", "주제별 학습"), el("p", "외움 · 학습중 · 새 문항", "muted"));
   ctx.data.topics.forEach((topic, index) => {

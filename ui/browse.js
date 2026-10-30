@@ -1,3 +1,4 @@
+import { withIcon } from "./icons.js";
 import { isMemorized } from "../core/store.js";
 
 function el(tag, text, className) {
@@ -68,7 +69,7 @@ export function render(root, ctx) {
   root.replaceChildren();
   const topic = ctx.params?.topic || "";
   const year = String(ctx.params?.year || "");
-  root.append(el("h1", "문항 목록"));
+  root.append(el("h1", withIcon("문항 목록")));
   const filters = el("section", null, "panel");
   topicFilters(filters, ctx, topic, year);
   yearFilter(filters, ctx, topic, year);

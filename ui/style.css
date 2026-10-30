@@ -35,7 +35,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "맑은 고딕", sans-serif;
+  font-family: "Tossface", "Pretendard", sans-serif;
   font-weight: 400;
   line-height: 1.7;
   overflow-wrap: anywhere;
@@ -53,7 +53,7 @@ h2 { margin: 0 0 12px; font-size: 1.15rem; }
 h3 { margin: 0 0 8px; font-size: 1rem; }
 p { margin: 0 0 14px; }
 a { color: var(--primary); text-underline-offset: 4px; }
-button, input, select { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
 button { font-weight: 400; }
 button, summary, select, input[type="range"] { cursor: pointer; }
@@ -241,3 +241,48 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
     --topic-10: #b4c9ab;
   }
 }
+
+/* 답안·풀이·암기 지도 글 */
+.rt { padding: 4px 0 8px; line-height: 1.75; }
+.rt p { margin: 6px 0; }
+.rt { font-size: .97rem; }
+.rt-head { margin: 22px 0 8px; padding: 6px 12px; border-radius: 8px; background: var(--primary); color: var(--primary-text); font-size: 1rem; }
+.rt-head:first-child { margin-top: 8px; }
+.rt-chapter { margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--primary); color: var(--primary); font-size: 1.05rem; }
+.rt-section { margin: 16px 0 6px; color: var(--hint); font-size: 1rem; }
+.rt-group { margin: 16px 0 6px; padding: 4px 10px; border-left: 4px solid var(--hint); color: var(--hint); font-size: 1rem; }
+.rt-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.rt-chip { padding: 1px 9px; border: 1px solid var(--primary); border-radius: 999px; background: var(--surface); color: var(--primary); font-size: .85rem; }
+.rt-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0; }
+.rt-step { padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
+.rt-arrow { color: var(--primary); font-size: 1.2rem; }
+.rt-mnemonic { padding: 6px 12px; border-radius: 8px; background: var(--draft-soft); color: var(--draft); }
+.rt-key { margin-right: 6px; color: var(--primary); }
+.rt-key::after { content: " ·"; color: var(--muted); }
+.rt-mark { margin-right: 6px; color: var(--muted); }
+.rt .rt-item { margin-top: 14px; padding: 4px 10px; border-radius: 8px; background: var(--surface); }
+.rt .rt-sub { margin-left: 18px; padding-left: 10px; border-left: 2px solid var(--line); }
+.rt .rt-bullet { position: relative; margin-left: 8px; padding-left: 16px; }
+.rt-bullet::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+.rt-term .rt-key::after { content: " ="; }
+.rt-note { padding: 6px 10px; border-radius: 8px; background: var(--surface); color: var(--muted); }
+.rt-qa { margin: 10px 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.rt-q { margin: 0 0 4px; }
+.rt-a summary { color: var(--primary); cursor: pointer; }
+
+/* 덩어리 색(큰 흐름 순서): 상자·묶음 제목·세부 줄·키워드 칩이 같은 색 */
+:root { --g0: #2f6fb5; --g1: #c46a12; --g2: #2c8a4b; --g3: #7d55b0; --g4: #19808c; }
+@media (prefers-color-scheme: dark) { :root { --g0: #7fb2ec; --g1: #f0a85a; --g2: #7fd19b; --g3: #c0a0ec; --g4: #6fd0d8; } }
+.g0 { --g: var(--g0); } .g1 { --g: var(--g1); } .g2 { --g: var(--g2); } .g3 { --g: var(--g3); } .g4 { --g: var(--g4); }
+.rt-chip[class*=" g"] { border-color: var(--g); color: var(--g); }
+.rt-step[class*=" g"] { border: 2px solid var(--g); color: var(--g); }
+.rt-group[class*=" g"] { border-left-color: var(--g); color: var(--g); }
+.rt .rt-bullet[class*=" g"]::before { background: var(--g); }
+.rt-bullet[class*=" g"] .rt-key { color: var(--g); }
+.rt-chunk { animation: rt-in .25s ease-out; }
+@keyframes rt-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.ladder-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
+.ladder-next { flex: 1 1 200px; }
+.ladder-bar[hidden], .rt-chunk[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .rt-chunk { animation: none; } }
+.tab-ico { margin-right: 6px; }

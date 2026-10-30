@@ -1,3 +1,4 @@
+import { withIcon } from "./icons.js";
 import { dayKey, exportState, importState, isMemorized } from "../core/store.js";
 import { pickToday } from "../core/srs.js";
 import { illusions } from "../core/confidence.js";
@@ -33,7 +34,7 @@ function showOverview(root, ctx, today, now) {
   const date = new Date(now).toLocaleDateString("ko-KR", {
     year: "numeric", month: "long", day: "numeric", weekday: "long",
   });
-  root.append(el("p", date, "muted"), el("h1", "오늘의 공부"));
+  root.append(el("p", date, "muted"), el("h1", withIcon("오늘의 공부")));
   const count = ctx.data.items.filter(item => {
     const card = ctx.state.cards[item.id];
     return card && isMemorized(card);
