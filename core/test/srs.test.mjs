@@ -150,7 +150,7 @@ test("pickToday: 착각 우선, 오래된 복습 순서와 주제 교대, 오늘
   getCard(state, "orphan").fsrs = { ...old, due: 0 };
   const before = structuredClone({ items, state });
   assert.deepEqual(pickToday(items, state, now), {
-    due: ["ub", "ua", "rb", "ra", "rc"], fresh: ["new-a1", "new-a2"],
+    due: ["ub", "ua", "rb", "ra", "rc"], started: [], fresh: ["new-a1", "new-a2"],
   });
   assert.deepEqual({ items, state }, before);
 });
@@ -164,12 +164,12 @@ test("pickToday: 날짜 변경 시 새 문항 한도를 복원하고 한도 초�
     { id: "b", topic: "A", status: "확정" },
     { id: "a", topic: "A", status: "확정" },
   ];
-  assert.deepEqual(pickToday(items, state, now), { due: [], fresh: [] });
+  assert.deepEqual(pickToday(items, state, now), { due: [], started: [], fresh: [] });
   state.daily.date = "2026-10-28";
-  assert.deepEqual(pickToday(items, state, now), { due: [], fresh: ["a", "b"] });
+  assert.deepEqual(pickToday(items, state, now), { due: [], started: [], fresh: ["a", "b"] });
   state.settings.newPerDay = 5;
   assert.deepEqual(pickToday(items, state, now).fresh, ["a", "b", "z"]);
-  assert.deepEqual(pickToday([], state, now), { due: [], fresh: [] });
+  assert.deepEqual(pickToday([], state, now), { due: [], started: [], fresh: [] });
 });
 
 test("pickToday: 만기가 정확히 현재인 카드도 포함하고 같은 주제가 없으면 만기순이다", () => {
@@ -178,5 +178,15 @@ test("pickToday: 만기가 정확히 현재인 카드도 포함하고 같은 주
   for (const [id, due] of [["a", now - DAY], ["b", now - 2 * DAY], ["c", now]]) {
     getCard(state, id).fsrs = { ...old, due };
   }
-  assert.deepEqual(pickToday(items, state, now), { due: ["b", "a", "c"], fresh: [] });
+  assert.deepEqual(pickToday(items, state, now), { due: ["b", "a", "c"], started: [], fresh: [] });
+});
+
+test("pickToday: 읽기만 끝낸 문항은 이어서 하고 새 문항으로 다시 뽑지 않는다", () => {
+  const state = loadState({ getItem: () => null });
+  state.settings.newPerDay = 3;
+  state.daily = { date: dayKey(now), newDone: 2 };
+  const items = ["a", "b", "c", "d"].map(id => ({ id, topic: "A", status: "확정" }));
+  getCard(state, "a").stage = 2;
+  getCard(state, "b").stage = 2;
+  assert.deepEqual(pickToday(items, state, now), { due: [], started: ["a", "b"], fresh: ["c"] });
 });

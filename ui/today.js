@@ -40,12 +40,14 @@ function showOverview(root, ctx, today, now) {
     return card && isMemorized(card);
   }).length;
   const row = el("div", null, "row overview");
-  row.append(el("span", `복습 ${today.due.length}개`),
-    el("span", `새 문항 ${today.fresh.length}개`), el("span", `외운 문항 ${count}/126`));
+  row.append(el("span", `복습 ${today.due.length}개`));
+  if (today.started.length) row.append(el("span", `이어서 ${today.started.length}개`));
+  row.append(el("span", `새 문항 ${today.fresh.length}개`), el("span", `외운 문항 ${count}/126`));
   root.append(row);
-  const queue = [...today.due, ...today.fresh];
+  const queue = [...today.due, ...today.started, ...today.fresh];
   if (queue.length) {
-    root.append(button("오늘 공부 시작", () => start(ctx, queue), "btn primary wide"));
+    const label = today.started.length || ctx.state.daily.newDone ? "이어서 공부하기" : "오늘 공부 시작";
+    root.append(button(label, () => start(ctx, queue), "btn primary wide"));
     return;
   }
   root.append(el("p", "오늘 할 일 끝", "notice"));

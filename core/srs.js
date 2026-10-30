@@ -121,9 +121,12 @@ export function pickToday(items, state, now) {
   const done = state.daily.date === dayKey(now) ? state.daily.newDone : 0;
   const limit = Math.max(0, state.settings.newPerDay - done);
   const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
-  const fresh = items.filter(item => !cardOf(item.id)?.fsrs)
+  // 읽기(1단계)는 끝냈지만 아직 확인 전인 문항: 앱을 껐다 켜도 이어서 하도록 따로 챙긴다(새 문항 한도와 무관).
+  const read = item => !cardOf(item.id)?.fsrs && cardOf(item.id)?.stage >= 2;
+  const started = items.filter(read).map(item => item.id);
+  const fresh = items.filter(item => !cardOf(item.id)?.fsrs && !read(item))
     .sort((a, b) => Number(b.status === "확정") - Number(a.status === "확정")
       || compare(a.topic, b.topic) || compare(a.id, b.id))
     .slice(0, limit).map(item => item.id);
-  return { due: [...urgent, ...regular], fresh };
+  return { due: [...urgent, ...regular], started, fresh };
 }
