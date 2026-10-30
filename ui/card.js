@@ -119,6 +119,15 @@ function appendOutline(container, item, key, open) {
   container.append(details);
 }
 
+// 암기 지도: 키워드 → 큰 흐름 → 세부 흐름 → 근거 → 암기법 → 셀프 테스트.
+function appendStudy(container, item, open) {
+  if (!item.study) return;
+  const study = disclosure("암기 지도", item.study);
+  study.className = "written study";
+  study.open = open;
+  container.append(study);
+}
+
 // 쉬운 풀이(초보용 설명)와 모범 답안(답안지에 옮겨 쓸 글).
 function appendWritten(container, item, easyOpen) {
   if (item.easy) {
@@ -149,6 +158,7 @@ function recallToggle(key, missed) {
 }
 
 function fullAnswers(container, item, missed = null, easyOpen = false) {
+  appendStudy(container, item, easyOpen);
   appendOutline(container, item, "intro", true);
   item.parts.forEach((part, partIndex) => {
     const section = el("section", null, "answer-part");
@@ -167,7 +177,7 @@ function fullAnswers(container, item, missed = null, easyOpen = false) {
     container.append(section);
   });
   appendOutline(container, item, "outro", true);
-  appendWritten(container, item, easyOpen);
+  appendWritten(container, item, easyOpen && !item.study);
 }
 
 function hole(segment) {

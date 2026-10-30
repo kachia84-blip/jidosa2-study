@@ -11,6 +11,7 @@ export function mergeData(qJson, aJson) {
       outline: answer?.outline ?? null,
       model: answer?.model ?? "",
       easy: answer?.easy ?? "",
+      study: answer?.study ?? "",
       total: parts.reduce((sum, part) => sum + part.items.length, 0),
     };
   });
