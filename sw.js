@@ -1,5 +1,5 @@
 // 앱 껍데기는 캐시 우선, data/는 네트워크 우선(답안 수정이 바로 반영되게)
-const CACHE = "jd2-v11";
+const CACHE = "jd2-v12";
 const SHELL = [
   "./", "index.html", "app.js", "router.js", "manifest.webmanifest", "icon.svg",
   "core/data.js", "core/store.js", "core/srs.js", "core/mask.js", "core/confidence.js", "core/basis.js", "core/richtext.js", "ui/rich.js",

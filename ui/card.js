@@ -47,13 +47,28 @@ function showHeader(view, session, item, card) {
   row.append(el("span", item.type, "badge"), el("span", item.topic, "badge"),
     el("span", `단계 ${card.stage} ${STAGES[card.stage]}`, `badge stage${card.stage}`));
   if (item.status === "초안") row.append(el("span", "초안·확인 필요", "badge draft"));
-  view.append(row, el("h1", item.question, "question preserve"));
+  const title = el("h1", item.question, "question preserve");
+  view.append(row, title);
+  pinQuestion(view, title, item);
   if (item.subs?.length) {
     const subs = el("ul", null, "subquestions");
     item.subs.forEach(sub => subs.append(el("li", sub, "preserve")));
     view.append(subs);
   }
   if (item.note) view.append(disclosure("메모", item.note));
+}
+
+// 문제 글이 화면 위로 지나가면 위에 붙는 문제 줄. 누르면 전체가 펼쳐진다.
+function pinQuestion(view, title, item) {
+  const pin = button(item.question, () => pin.classList.toggle("full"), "q-pin");
+  pin.hidden = true;
+  pin.setAttribute("aria-label", "문제 다시 보기");
+  view.prepend(pin);
+  if (!("IntersectionObserver" in window)) return;
+  new IntersectionObserver(([entry]) => {
+    pin.hidden = entry.isIntersecting || entry.boundingClientRect.top > 0;
+    if (pin.hidden) pin.classList.remove("full");
+  }).observe(title);
 }
 
 function appendBasis(parent, part) {
