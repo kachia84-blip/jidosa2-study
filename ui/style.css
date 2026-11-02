@@ -358,3 +358,8 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 .memo-q { margin: 8px 0 0; padding: 10px 12px; border-left: 3px solid var(--primary); border-radius: 0 8px 8px 0; background: var(--surface); font-weight: 600; }
 .memo-q[hidden] { display: none; }
 .memo-card .rt { margin-bottom: 10px; }
+
+/* 출처 확인(교차 확인) */
+.xcheck ol { padding-left: 20px; }
+.xcheck li { margin: 8px 0; color: var(--text, inherit); }
+.xcheck li .badge { margin-right: 4px; }

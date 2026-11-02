@@ -59,6 +59,7 @@ function questionRow(item, ctx) {
   const badges = el("span", null, "row");
   badges.append(badge(ctx.state.cards[item.id]));
   if (item.status === "초안") badges.append(el("span", "초안", "badge draft"));
+  if (item.status === "교차확인") badges.append(el("span", "출처 확인", "badge"));
   if (!item.total) badges.append(el("span", "답안 없음", "badge"));
   link.append(badges);
   li.append(link);

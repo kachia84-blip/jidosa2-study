@@ -6,6 +6,7 @@ import { basisPieces } from "../core/basis.js";
 import { richText, studyLadder } from "./rich.js";
 import { withIcon } from "./icons.js";
 import { figureFor } from "./figures.js";
+import { appendXcheck } from "./xcheck.js";
 import { toHash } from "../router.js";
 
 const STAGES = ["", "보기", "빈칸", "앞글자", "백지"];
@@ -53,6 +54,7 @@ function showHeader(view, session, item, card) {
   row.append(el("span", item.type, "badge"), el("span", item.topic, "badge"),
     el("span", `단계 ${card.stage} ${STAGES[card.stage]}`, `badge stage${card.stage}`));
   if (item.status === "초안") row.append(el("span", "초안·확인 필요", "badge draft"));
+  if (item.status === "교차확인") row.append(el("span", "출처 2곳 확인", "badge"));
   const title = el("h1", item.question, "question preserve");
   view.append(row, title);
   let last = title;
@@ -209,6 +211,7 @@ function fullAnswers(container, item, missed = null, easyOpen = false) {
     section.append(list);
     appendAids(section, part, true);
     appendBasis(section, part);
+    appendXcheck(section, part);
     appendExtra(section, part);
     container.append(section);
   });
