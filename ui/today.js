@@ -31,6 +31,22 @@ function extraFresh(ctx, now) {
   return pickToday(ctx.data.items, state, now).fresh;
 }
 
+// 오늘 푸는 순서: 복습 → 읽은 문제 확인 → 새 문제 읽기(새 문제는 읽고 나면 이번 공부 끝에 한 번 더 확인).
+function steps(today) {
+  const list = el("ol", null, "steps");
+  [["1", "복습", today.due.length, "기억이 흐려질 때가 된 문제"],
+    ["2", "읽은 문제 확인", today.started.length, "읽기만 하고 아직 채점 안 한 문제"],
+    ["3", "새 문제 읽기", today.fresh.length, "처음 보는 문제, 읽고 나면 끝에서 다시 확인"]]
+    .forEach(([n, name, k, why]) => {
+      const li = el("li", null, k ? "" : "zero");
+      const text = el("span");
+      text.append(el("span", `${name} ${k}개`, "step-name"), el("br"), el("span", why, "muted"));
+      li.append(el("span", n, "step-n"), text);
+      list.append(li);
+    });
+  return list;
+}
+
 function showOverview(root, ctx, today, now) {
   const date = new Date(now).toLocaleDateString("ko-KR", {
     year: "numeric", month: "long", day: "numeric", weekday: "long",
@@ -40,11 +56,7 @@ function showOverview(root, ctx, today, now) {
     const card = ctx.state.cards[item.id];
     return card && isMemorized(card);
   }).length;
-  const row = el("div", null, "row overview");
-  row.append(el("span", `복습 ${today.due.length}개`));
-  if (today.started.length) row.append(el("span", `이어서 ${today.started.length}개`));
-  row.append(el("span", `새 문항 ${today.fresh.length}개`), el("span", `외운 문항 ${count}/126`));
-  root.append(row);
+  root.append(steps(today), el("p", `외운 문항 ${count}/126`, "muted"));
   const queue = [...today.due, ...today.started, ...today.fresh];
   if (queue.length) {
     const label = today.started.length || ctx.state.daily.newDone ? "이어서 공부하기" : "오늘 공부 시작";

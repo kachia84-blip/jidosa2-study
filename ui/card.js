@@ -1,13 +1,16 @@
 import { dayKey, getCard } from "../core/store.js";
-import { gradeOf, nextStage, review } from "../core/srs.js";
+import { gradeOf, kindOf, nextStage, review } from "../core/srs.js";
 import { countHint, maskPart } from "../core/mask.js";
 import { CONF, recordResult } from "../core/confidence.js";
 import { basisPieces } from "../core/basis.js";
 import { richText, studyLadder } from "./rich.js";
 import { withIcon } from "./icons.js";
+import { figureFor } from "./figures.js";
+import { toHash } from "../router.js";
 
 const STAGES = ["", "보기", "빈칸", "앞글자", "백지"];
 const CONF_LABELS = { sure: "확신", unsure: "애매", none: "모름" };
+const KINDS = { review: "1 복습", check: "2 읽은 문제 확인", new: "3 새 문제 읽기" };
 
 function el(tag, text, className) {
   const node = document.createElement(tag);
@@ -41,7 +44,10 @@ function createSession(ctx) {
 }
 
 function showHeader(view, session, item, card) {
-  view.append(el("p", `${session.index + 1} / ${session.queue.length}`, "muted"),
+  const where = el("p", null, "kind-line");
+  if (!session.one) where.append(el("span", KINDS[kindOf(card)], `kind kind-${kindOf(card)}`));
+  where.append(el("span", ` ${session.index + 1} / ${session.queue.length}`, "muted"));
+  view.append(where,
     el("p", `${item.year}년 · ${item.round}회 · ${item.no}번 · ${item.points}점`, "muted"));
   const row = el("div", null, "row");
   row.append(el("span", item.type, "badge"), el("span", item.topic, "badge"),
@@ -49,18 +55,22 @@ function showHeader(view, session, item, card) {
   if (item.status === "초안") row.append(el("span", "초안·확인 필요", "badge draft"));
   const title = el("h1", item.question, "question preserve");
   view.append(row, title);
-  pinQuestion(view, title, item);
+  let last = title;
   if (item.subs?.length) {
     const subs = el("ul", null, "subquestions");
     item.subs.forEach(sub => subs.append(el("li", sub, "preserve")));
     view.append(subs);
+    last = subs;
   }
+  pinQuestion(view, last, item);
   if (item.note) view.append(disclosure("메모", item.note));
 }
 
-// 문제 글이 화면 위로 지나가면 위에 붙는 문제 줄. 누르면 전체가 펼쳐진다.
+// 문제(1) 2) 소문항까지)가 화면 위로 지나가면 위에 붙는 문제 줄. 누르면 전체가 펼쳐진다.
 function pinQuestion(view, title, item) {
-  const pin = button(item.question, () => pin.classList.toggle("full"), "q-pin");
+  const pin = button("", () => pin.classList.toggle("full"), "q-pin");
+  pin.append(el("span", item.question, "q-pin-main"));
+  (item.subs || []).forEach(sub => pin.append(el("span", sub, "q-pin-sub")));
   pin.hidden = true;
   pin.setAttribute("aria-label", "문제 다시 보기");
   view.prepend(pin);
@@ -183,6 +193,8 @@ function recallToggle(key, missed) {
 
 function fullAnswers(container, item, missed = null, easyOpen = false) {
   appendStudy(container, item, easyOpen);
+  const figure = figureFor(item.id);
+  if (figure) container.append(figure);
   appendOutline(container, item, "intro", true);
   item.parts.forEach((part, partIndex) => {
     const section = el("section", null, "answer-part");
@@ -249,8 +261,15 @@ function showSummary(root, ctx, session) {
     button("오늘로", () => ctx.go("today", {}), "btn primary"));
 }
 
+// 지금 위치를 주소에 적어 둔다(새로 고침해도 같은 문제에서 이어서). hashchange는 일으키지 않는다.
+function remember(session) {
+  if (session.one) return;
+  history.replaceState(null, "", toHash("card", { queue: session.queue.join(","), i: session.index, mode: "review" }));
+}
+
 function advance(root, ctx, session) {
   session.index++;
+  remember(session);
   if (session.index < session.queue.length) showCard(root, ctx, session);
   else if (session.one) ctx.go("browse", {});
   else showSummary(root, ctx, session);

@@ -145,3 +145,9 @@ export function pickToday(items, state, now) {
   const freshPicked = pairUp(fresh, topicOf).slice(0, limit);
   return { due: [...urgent, ...regular], started, fresh: freshPicked };
 }
+
+// 지금 카드가 공부 순서의 어느 칸인지: 복습(채점 기록 있음) → 확인(읽고 아직 채점 전) → 새 문제(처음 읽기).
+export function kindOf(card) {
+  if (card?.fsrs) return "review";
+  return card?.stage >= 2 ? "check" : "new";
+}

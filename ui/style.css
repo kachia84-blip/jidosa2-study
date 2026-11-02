@@ -328,9 +328,23 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 @media (min-width: 560px) { .stats-row { grid-template-columns: repeat(4, 1fr); } }
 
 /* 아래로 내려가도 문제가 보이게 위에 붙는 줄 */
-.q-pin { position: sticky; top: 0; z-index: 4; display: -webkit-box; width: 100%; margin: 0 0 8px; padding: 10px 14px; overflow: hidden; border: 1px solid var(--line); border-radius: 0 0 12px 12px; background: var(--surface); box-shadow: 0 4px 12px rgba(0,0,0,.08); color: inherit; font: inherit; font-size: .92rem; text-align: left; white-space: pre-wrap; -webkit-line-clamp: 2; -webkit-box-orient: vertical; cursor: pointer; }
+.q-pin { position: sticky; top: 0; z-index: 4; display: block; width: 100%; max-height: 40vh; margin: 0 0 8px; padding: 10px 14px; overflow-y: auto; border: 1px solid var(--line); border-radius: 0 0 12px 12px; background: var(--surface); box-shadow: 0 4px 12px rgba(0,0,0,.08); color: inherit; font: inherit; font-size: .92rem; text-align: left; cursor: pointer; }
 .q-pin[hidden] { display: none; }
-.q-pin.full { display: block; max-height: 60vh; overflow-y: auto; }
+.q-pin-main, .q-pin-sub { display: -webkit-box; overflow: hidden; white-space: pre-wrap; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.q-pin-sub { margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--primary); -webkit-line-clamp: 1; }
+.q-pin.full { max-height: 70vh; }
+.q-pin.full .q-pin-main, .q-pin.full .q-pin-sub { display: block; }
+.kind-line { margin: 0 0 4px; }
+.kind { padding: 2px 10px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: .85rem; font-weight: 700; }
+.kind-new { background: var(--draft-soft); color: var(--draft); }
+.steps { margin: 10px 0 14px; padding: 0; list-style: none; }
+.steps li { display: flex; gap: 10px; align-items: baseline; margin: 6px 0; padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
+.steps li.zero { opacity: .55; }
+.step-n { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: var(--surface); font-weight: 700; }
+.step-name { font-weight: 600; }
+.figure { margin: 12px 0; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.figure svg { display: block; width: 100%; height: auto; max-width: 460px; margin: 0 auto; color: inherit; }
+.figure figcaption { margin-top: 6px; color: var(--muted); font-size: .85rem; text-align: center; }
 
 /* 암기 탭 */
 .memo-card { margin-bottom: 14px; }

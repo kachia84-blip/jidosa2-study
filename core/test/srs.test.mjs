@@ -199,3 +199,11 @@ test("pickToday: 새 문항은 같은 주제 2개씩 짝, 짝끼리는 주제를
   assert.deepEqual(pickToday(items, state, now).fresh, ["a1", "a2", "b1", "b2", "c1"]);
   assert.deepEqual(pairUp(["a1", "a2", "a3", "b1"], id => id[0]), ["a1", "a2", "b1", "a3"]);
 });
+
+import { kindOf } from "../srs.js";
+test("kindOf: 복습·확인·새 문제", () => {
+  assert.equal(kindOf({ fsrs: { due: 1 }, stage: 3 }), "review");
+  assert.equal(kindOf({ fsrs: null, stage: 2 }), "check");
+  assert.equal(kindOf({ fsrs: null, stage: 1 }), "new");
+  assert.equal(kindOf(undefined), "new");
+});
