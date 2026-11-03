@@ -101,6 +101,7 @@ function appendBasis(parent, part) {
 }
 
 // 외부 모범답안·지침에서 찾은 보완 항목. 다른 답이면 표시하고 출처 링크를 단다.
+// book: 출처 2곳 확인에서 줄어든 교재 원래 문장(출처 미확인이라 링크 없음).
 function appendExtra(parent, part) {
   if (!part.extra?.length) return;
   const details = el("details", null, "extra");
@@ -109,7 +110,9 @@ function appendExtra(parent, part) {
   part.extra.forEach(extra => {
     const li = el("li");
     if (extra.alt) li.append(el("span", "다른 답", "badge"));
+    if (extra.book) li.append(el("span", "교재·출처 미확인", "badge draft"));
     li.append(el("span", ` ${extra.text}`), el("p", extra.why, "muted"));
+    if (!extra.src) return list.append(li);
     const link = el("a", "출처 열기", "btn basis-link");
     link.href = extra.src;
     link.target = "_blank";
