@@ -881,10 +881,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://oshri.kosha.or.kr/kosha/data/business/expertiseBusinessData.do?articleNo=410956&attachNo=232088&mode=download",
-        "https://m.esangedu.kr/attach/board/1603432051_01.pdf"
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1915/1915.36",
+        "https://www.hse.gov.uk/pubns/priced/hsg140.pdf"
        ],
-       "note": "공단 확인·게시 매뉴얼의 가연성가스 측정·환기와 냉동·물류창고 매뉴얼의 인화성물질 주변 화기 금지·잔류가스 확인이 일치한다."
+       "note": "OSHA 1915.36(a)(1)·(2)는 가연성 분위기를 만드는 용제 사용 시 점화원 금지·환기·증기농도 반복측정을 함께 규정하고, HSE HSG140 57~62항은 폭발성 분위기 방지 환기, 용제 증발공정의 가스검지 및 점화원 통제를 설명하므로 유기용제 폭발 예방이라는 적용대상까지 확인된다."
       },
       {
        "verdict": "수정",
@@ -897,10 +897,11 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.syu.ac.kr/wp-content/uploads/2025/03/2025%EB%85%84%EB%8F%84-%EC%82%BC%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90-%EC%95%88%EC%A0%84%EC%84%B8%EB%B6%80%EC%A7%91%ED%96%89%EA%B3%84%ED%9A%8D.pdf",
-        "https://www.kosca21.or.kr/pages/07/01.asp?bid=3893&mode=view&page=&page_num=10&table=km_b_notice"
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.25",
+        "https://www.osha.gov/sites/default/files/enforcement/directives/CPL_2-1_037.pdf",
+        "https://app.leg.wa.gov/wac/default.aspx?cite=51-54A-3304"
        ],
-       "note": "삼육대는 기름걸레·폐기물의 축열 발화와 청소·수거를, 건설협회 안내는 기름 묻은 폐기물의 적치 금지와 처리 방법을 명시한다."
+       "note": "[1] OSHA 1926.25(b)·(c)는 기름걸레·폐기물의 용기별 분리수거와 주기적 제거를, [2] 부록 C-3은 기름걸레 등 축적물의 자연발화를 설명하며, [3] WAC 3304.1.2·3304.2는 작업 종료 시 건물 밖 반출과 자연발화성 기름걸레의 전용 수거용기 보관을 규정한다."
       },
       {
        "verdict": "법령",
@@ -1054,10 +1055,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.smartcona.co.kr/main/file_download?colum=board_file&gb=PDS&idx=355",
+        "https://www.smartcona.co.kr/upload/board/img_file_board_file_1761722033.pdf",
         "https://lh.or.kr/boardDownload.es?bid=0027&list_no=722044&seq=2"
        ],
-       "note": "LH 단지분야 표 28은 장비 작업반경·안전성을, 공동주택 지침은 공정별 장비·가설 설치와 운영 배치계획을 검토하도록 한다."
+       "note": "① 한국도로공사 고속도로 BIM 적용지침(시공자편) 3.6.3, 113쪽은 장비 위치·동선반경·양중범위·구조물 간섭을 검토한다. ② LH 공동주택 BIM 적용지침 39쪽도 최적 위치·작업반경·간섭·장비 진입 및 회전동선을 명시하므로 원문 전체와 일치한다."
       },
       {
        "verdict": "수정",
@@ -2492,10 +2493,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://civilengr.kr/doc/KDS/241421",
-        "https://eurocodes.jrc.ec.europa.eu/sites/default/files/2022-06/1110_WS_EC2.pdf"
+        "https://api.repository.cam.ac.uk/server/api/core/bitstreams/a7ec4ede-7ff5-4561-a157-46ee32f43e4c/content",
+        "https://scholarworks.aub.edu.lb/handle/10938/10687"
        ],
-       "note": "KDS 24 14 21 재게시본 4.4.4.2(1)과 JRC 설계예제 1.4.1.1은 부착력 전달을 위한 최소피복을 요구한다."
+       "note": "케임브리지대 Mak·Lees의 Bond strength and confinement in reinforced concrete(2022) 서론은 피복 손상이 부착·힘 전달·합성거동에 미치는 영향을 연결하고, 베이루트미국대 Assaad 학위논문(2015) 초록은 일체거동이 철근·콘크리트의 부착에 의존하며 피복두께가 부착을 좌우한다고 명시한다."
       },
       {
        "verdict": "일치",
@@ -2508,10 +2509,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://civilengr.kr/doc/KDS/241421",
-        "https://www.concretecentre.com/TCC/media/TCCMediaLibrary/Events/Online%20course/CCIP_Concise_EC2.pdf"
+        "https://www.concrete.org/frequentlyaskedquestions.aspx?faqid=668",
+        "https://rosap.ntl.bts.gov/view/dot/89537/dot_89537_DS1.pdf"
        ],
-       "note": "KDS 24 14 21 4.4.4.2(1)·(13)과 Concise Eurocode 2 4.1·4.6은 내화성 확보를 위한 피복·철근 축거리를 규정한다."
+       "note": "[1] ACI ‘The importance of concrete cover’는 피복이 화재 시 철근의 빠른 온도상승을 막는다고 명시하고, [2] 미국 조지아주 교통국 FHWA-GA-26-2407 인쇄 66쪽 ‘Structural Factors’는 피복의 단열·열전달 지연이 철근 임계온도 도달을 늦추고 내화성을 높인다고 설명한다."
       },
       {
        "verdict": "일치",
@@ -2858,10 +2859,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://hankeon.com/std/KDS-11-80-10",
-        "https://www.fhwa.dot.gov/engineering/geotech/pubs/nhi10024/nhi10024.pdf"
+        "https://highways.fhwa.dot.gov/sites/fhwa.dot.gov/files/FHWA-NHI-10-024.pdf",
+        "https://www.geoinstitute.org/index.php/node/8236"
        ],
-       "note": "KDS 11 80 10 4.1.1·4.8과 FHWA 2.2.3·4.4.11은 보강재 설치공간, 적합한 뒤채움재와 배수 확보의 중요성을 설명한다."
+       "note": "FHWA 3장은 뒤채움 흙의 세립분·배수에 따른 변형과 파괴를, ASCE Geo-Institute는 필요 공간과 배수가 나쁜 불량 뒤채움재를 단점으로 제시한다."
       },
       {
        "verdict": "일치",
@@ -3295,11 +3296,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://kcsc.sjxtech.kr/doc/KDS/271005",
-        "https://kcsc.sjxtech.kr/doc/KCS/272000",
-        "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09992296"
+        "https://www.kroad.or.kr/journal/178th_05road_knowledge.pdf",
+        "https://kcsc.sjxtech.kr/doc/KDS/271005"
        ],
-       "note": "KDS 27 10 05 4.5.2(10)~(11)·KCS 27 20 00 3.2.2의 낮은 토피·풍화·균열과 박동순·배종섬(2015)의 불연속면 파괴사례가 부합한다."
+       "note": "도로협회 NATM 리스크 표는 저토피·풍화대·절리·파쇄대의 붕락을, KDS 4.5.2는 갱구부 토피·풍화 및 불연속면을 다룬다."
       },
       {
        "verdict": "일치",
@@ -3709,10 +3709,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/moctroadguide/LS/CIKCLS122017/CIKCLS122017.pdf",
-        "https://www.codil.or.kr/filebank/construction/SS/CIGCSS210062/CIGCSS210062.pdf"
+        "https://www.jkta.or.kr/articles/xml/8GOz/",
+        "https://stacks.cdc.gov/view/cdc/206894/cdc_206894_DS1.pdf"
        ],
-       "note": "두 자료의 내압작용 설명은 록볼트 인장력이 구속압을 늘려 3축응력 상태를 형성하고 암반 강도·내하력 저하를 억제한다."
+       "note": "[1] 한국터널지하공간학회 ‘록볼트로 보강된 터널주변지반의 강도정수 변화에 대한 연구’ 2.2절은 록볼트 설치로 구속압 σ3가 부가되어 지반강도가 증가한다고 명시하고, [2] 미국 광산국 OFR 60(1)-80 제6장 ‘Rock Strength’ 인쇄 115쪽은 볼트 긴장에 의한 구속압 증가가 암반 전단강도를 높인다고 설명한다."
       },
       {
        "verdict": "일치",
@@ -4112,10 +4112,11 @@
       {
        "verdict": "일치",
        "src": [
-        "https://card.seumedu.kr/data/safe/%EA%B1%B4%EC%84%A4%ED%98%84%EC%9E%A5%20%EA%B7%BC%EB%A1%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B8%B0%EC%B4%88%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%EA%B5%90%EC%9C%A1%20%ED%91%9C%EC%A4%80%20%EA%B5%90%EC%9E%AC.pdf",
-        "https://oshri.kosha.or.kr/kosha/data/business/consSafetyBusinessData.do?articleNo=455686&attachNo=262322&mode=download"
+        "https://oshri.kosha.or.kr/kosha/data/business/consSafetyBusinessData.do?articleNo=455686&attachNo=262322&mode=download",
+        "https://books.hse.gov.uk/gempdf/hsg144.pdf",
+        "https://www.hse.gov.uk/construction/safetytopics/excavators-overview.htm"
        ],
-       "note": "공단 교재 p.83~85의 후진·회전 충돌 및 전도 위험과 공단 건설기계 작업계획서 작성자료 p.26의 전도·협착 예방대책에 부합한다."
+       "note": "① 공단 건설기계 작업계획서 자료 35쪽은 후진·선회 충돌, 구조물 사이 끼임, 급선회에 따른 전도 위험을 제시한다. ② HSE HSG144 59~61항은 선회·후진 사고와 하향 버킷 선회 시 전도를, ③ HSE 굴착기 개요는 선회 협착을 명시한다. 각 동작이 세 사고를 모두 일으킨다는 뜻이 아닌 공정별 위험요인 열거로 일치한다."
       },
       {
        "verdict": "일치",
@@ -4531,10 +4532,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/original/MA/OTKCMA140021/OTKCMA140021.pdf",
-        "https://www.kosha.or.kr/ebook/fcatalog/access/ecatalogt.jsp?Dir=516&callmode=normal&catimage=&eclang=ko&start=150&um=s"
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.452",
+        "https://www.edudodbom.co.kr/wp-content/uploads/2025/02/%EA%B5%90%EC%95%88-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C_%EB%96%A8%EC%96%B4%EC%A7%90-%EB%B0%8F-%EB%AC%B4%EB%84%88%EC%A7%90-%EC%98%88%EB%B0%A9%EA%B9%80%EA%B3%A4%EB%AC%B5-%EA%B0%95%EC%82%AC.pdf"
        ],
-       "note": "개선방안 연구 p.51의 연결핀·수평재 누락 점검과 공단 실무길잡이 p.149의 벽이음 미설치·가새 손상에 의한 붕괴 위험에 부합한다."
+       "note": "① OSHA 1926.452(b)(2)~(3), (c)(2)~(4)는 가새·건물 벽이음·연결핀의 설치와 체결을 요구한다. ② 교육교안 제3장 비계공사 위험요인 표는 가새 누락·벽연결재 시공누락·연결부 전용철물 누락을 각각 명시한다. 설치의무와 누락 위험이 대응하므로 일치한다."
       },
       {
        "verdict": "일치",
@@ -4930,11 +4931,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://highways.fhwa.dot.gov/sites/fhwa.dot.gov/files/FHWA-NHI-10-016_0.pdf",
-        "https://www.jbsafety.co.kr/bbs_shop/file_download.php?board_code=4_3&board_idx=9703&sel_no=",
-        "https://text.cnu.ac.kr/IMG/01/000000007052/SERVICE/000000007052_01.PDF"
+        "https://www.standardsforhighways.co.uk/tses/attachments/008eb5a9-c3cc-4e0b-aa1f-33a450ed7b33?inline=true",
+        "https://mde.maryland.gov/programs/water/DamSafety/documents/2011_ussd-materials_for_embankment_dams.pdf"
        ],
-       "note": "FHWA 7.2는 굴착토 부유·콘크리트 치환을, KOSHA C-37-2008 5.2(3)은 토사 침강방지를, 충남대 논문 3.5.7은 트레미 콘크리트 치환을 확인한다."
+       "note": "영국 도로공사 지침 MCHW Volume 2 Series NG1600의 NG1618·14쪽은 고체입자의 부유 유지와 콘크리트 타설 시 쉬운 치환을 함께 요구하고, USSD Materials for Embankment Dams(2011) Viscosity·120쪽도 부유를 유지하면서 트레미 콘크리트에 쉽게 치환될 점성을 명시하므로 '쉽게'까지 확인된다."
       }
      ]
     }
@@ -5313,10 +5313,10 @@
      "label": "2)",
      "items": [
       {
-       "text": "말뚝머리의 소요강도 확보 후 충분히 양생",
+       "text": "말뚝을 충분히 양생하여 항타에 필요한 강도 확보",
        "key": [
-        "소요강도",
-        "양생"
+        "양생",
+        "강도 확보"
        ]
       },
       {
@@ -5381,12 +5381,12 @@
      ],
      "xcheck": [
       {
-       "verdict": "일치",
+       "verdict": "수정",
        "src": [
-        "https://www.codil.or.kr/filebank/construction/OS/CIGCOSD90106/CIGCOSD90106.pdf",
-        "https://ems-www.pci.org/PCI_Docs/Publications/PCI%20Journal/2019/July-August/RP_Concrete%20Piling_JA19.pdf"
+        "https://www.fhwa.dot.gov/engineering/geotech/pubs/gec12/nhi16009_v2.pdf",
+        "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-19-6-2-50"
        ],
-       "note": "철도 전문시방서 5-4의 1.5.8은 양생 완료 후 반입을 요구하며, PCI 2.5·표 3.1 및 5.5.1은 소요강도·항타응력 제한과 두부 보수 후 충분한 양생을 규정한다."
+       "note": "FHWA 시공검사 기준과 뉴저지 19:6-2.50은 항타 전 양생 및 필요한 강도 확보를 요구한다."
       },
       {
        "verdict": "일치",
@@ -5659,10 +5659,12 @@
       {
        "verdict": "일치",
        "src": [
-        "https://eundori.com/wp-content/uploads/2024/05/C-97-2022_%ED%83%80%EC%9B%8C%ED%81%AC%EB%A0%88%EC%9D%B8-%EC%84%A4%EC%B9%98-%EC%A1%B0%EB%A6%BD-%ED%95%B4%EC%B2%B4-%EC%9E%91%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-%EC%9E%91%EC%84%B1%EC%A7%80%EC%B9%A8.pdf",
-        "https://www.labour.gov.hk/eng/public/os/B/crane.pdf"
+        "https://oshri.kosha.or.kr/kosha/data/confirmation_e.do?articleNo=343342&attachNo=190112&mode=download",
+        "https://www.labour.gov.hk/eng/public/os/B/crane.pdf",
+        "https://www.safework.nsw.gov.au/safety-alerts/safety-alerts/tower-crane-collapse",
+        "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1460-2695.2012.01716.x"
        ],
-       "note": "C-97-2022의 볼트 토크·핀 누락·노후부재 점검과 홍콩 지침 부록 3의 마스트·연결부 균열검사·교체 요구가 대응한다."
+       "note": "① 공단 타워크레인 위험경보 자료는 마스트 균열과 인상 중 연결볼트 체결을 붕괴 예방항목으로 제시한다. ② 홍콩 지침 10.6.1·10.18.5·부록2~3은 조립절차 이탈·볼트 풀림·구조부 균열의 파괴 위험을, ③ NSW 사고경보는 체결토크 불량·피로균열의 파손기구를, ④ 국과수 연구 초록은 마스트·회전부 손상에 의한 붕괴를 확인한다."
       },
       {
        "verdict": "일치",
@@ -6495,9 +6497,11 @@
        "verdict": "일치",
        "src": [
         "https://www.kosha.or.kr/ebook/fcatalog/access/ecatalogt.jsp?Dir=474&callmode=normal&catimage=&eclang=ko&start=20&um=s",
-        "https://seumedu.kr/data/safe/%EA%B1%B4%EC%84%A4%ED%98%84%EC%9E%A5%20%EA%B7%BC%EB%A1%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B8%B0%EC%B4%88%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%EA%B5%90%EC%9C%A1%20%ED%91%9C%EC%A4%80%20%EA%B5%90%EC%9E%AC.pdf"
+        "https://seumedu.kr/data/safe/%EA%B1%B4%EC%84%A4%ED%98%84%EC%9E%A5%20%EA%B7%BC%EB%A1%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B8%B0%EC%B4%88%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%EA%B5%90%EC%9C%A1%20%ED%91%9C%EC%A4%80%20%EA%B5%90%EC%9E%AC.pdf",
+        "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1029038655",
+        "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1029039815"
        ],
-       "note": "실무길잡이 19쪽과 기초교육 교재 64쪽의 안전모·안전대 착용에 부합."
+       "note": "공단 실무길잡이 인쇄19쪽은 갱폼 해체·반출 시 안전모·안전대를 요구하며, 기초교육 표준교재 64쪽은 갱폼 안전대 걸이시설을,134쪽 거푸집 해체사례는 '안전대를 걸고 작업'과 안전모 착용을 명시한다; 별도 법령인 안전보건규칙 제32조·제44조도 추락위험 작업의 안전모 착용과 안전대를 걸어 사용하는 설비를 규정하므로 단순 착용만으로 체결을 대신하지 않았다."
       },
       {
        "verdict": "일치",
@@ -6736,10 +6740,11 @@
       {
        "verdict": "일치",
        "src": [
-        "https://blog.kakaocdn.net/dn/btlguC/btrVK0XdM02/dibR4ZqSK3bYQEeA1Poggk/C-69-2022%20%EC%9D%B4%EB%8F%99%EC%8B%9D%20%ED%81%AC%EB%A0%88%EC%9D%B8%20%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%EC%9E%91%EC%97%85%20%EC%A7%80%EC%B9%A8.pdf?attach=1&knm=tfile.dat",
-        "https://m.esangedu.kr/attach/board/uploads/kboard_attached/2/201908/5d48dd837d00b7158046.pdf"
+        "https://www.kosha.or.kr/ebook/fcatalog/access/ecatalogt.jsp?Dir=452&callmode=normal&catimage=&eclang=ko&start=222&um=s",
+        "https://www.kosha.or.kr/kosha/data/business/consSafetyBusinessData.do?articleNo=240820&attachNo=117318&mode=download",
+        "https://assets.publishing.service.gov.uk/media/69bd45a5ed813d0d8b690c2b/code-of-safe-working-practices-for-merchant-seafarers-2026-edition.pdf"
        ],
-       "note": "C-69 5.3.1의 슬링·샤클 점검과 공단 가이드 줄걸이 용구별 점검사항에 부합."
+       "note": "① 공단 실무길잡이 줄걸이 취급 작업은 달기구 결함·줄걸이 방법 불량·손상 로프 파단을 위험으로 제시하며, 같은 공단의 ② 타워크레인 점검표는 샤클 변형·균열도 명시한다(①②는 한 출처로 계산). 독립 출처인 ③ 영국 MCA 작업지침 19.2.3·28.5.12~19도 로프·샤클 손상과 부적절한 결속·줄걸이각·지점 선정 위험을 뒷받침한다."
       },
       {
        "verdict": "일치",
@@ -6863,11 +6868,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.hse.gov.uk/pubns/indg383.pdf",
-        "https://lh.or.kr/boardDownload.es?bid=0034&list_no=648549&seq=2",
-        "https://www.hse.gov.uk/pubns/priced/hsg246.pdf"
+        "https://www.worksafe.govt.nz/assets/dmsassets/zero/971WKS-1-manual-handling-ACOP-manual-handling.pdf",
+        "https://www.stonetools.ie/documents/hse/Manual%20Handling.pdf"
        ],
-       "note": "HSE의 운반경로 장애물·시야 관리와 LH 위험요인 144의 통로 장애물 넘어짐에 부합."
+       "note": "뉴질랜드 인력운반 지침 B.4.4는 시야 차단에 따른 걸림과 통로 환경을, HSE 인력운반 지침 156항은 시야 제한 시 걸림·넘어짐 위험을 설명한다."
       },
       {
        "verdict": "일치",
@@ -7040,11 +7044,9 @@
        "verdict": "일치",
        "src": [
         "https://www.kosha.or.kr/ebook/fcatalog/access/ecatalogt.jsp?Dir=474&callmode=normal&catimage=&eclang=ko&start=20&um=s",
-        "https://www.kosha.or.kr/ebook/fcatalog/access/ecatalogt.jsp?Dir=474&callmode=normal&eclang=ko&start=34&um=s",
-        "https://seumedu.kr/data/safe/%EA%B1%B4%EC%84%A4%ED%98%84%EC%9E%A5%20%EA%B7%BC%EB%A1%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B8%B0%EC%B4%88%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%EA%B5%90%EC%9C%A1%20%ED%91%9C%EC%A4%80%20%EA%B5%90%EC%9E%AC.pdf",
-        "https://directives.nrcs.usda.gov/sites/default/files2/1745321698/D.1%20-%20Construction%20Safety%20Checklist.pdf"
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.501"
        ],
-       "note": "공단의 단부·개구부 추락 및 안전발판 설명과 미국 공공 점검표 34.2에 부합."
+       "note": "공단 실무길잡이 인쇄19쪽 '철근 조립작업' 도입부는 철근 배근 중 개구부·슬래브 단부 추락을 직접 명시하고, OSHA 1926.501(b)(1)·(4)·(5)는 작업면 단부·개구부 및 철근면 작업의 추락위험과 방호를 함께 규정한다; 배근은 철근 조립을 뜻하므로 작업조건까지 일치한다."
       },
       {
        "verdict": "일치",
@@ -10110,18 +10112,19 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/construction/DC/CIGCDC710008/CIGCDC710008.pdf",
-        "https://www.govinfo.gov/content/pkg/GOVPUB-TD2-PURL-gpo93381/pdf/GOVPUB-TD2-PURL-gpo93381.pdf"
+        "https://actamont.tuke.sk/pdf/2015/n2/4ozfirat.pdf",
+        "https://files.dnr.state.mn.us/input/environmentalreview/tamarack-nickel/2026-03-23-tal-amended-eaw-data-submittal-text.pdf",
+        "https://rosap.ntl.bts.gov/view/dot/87490/dot_87490_DS1.pdf"
        ],
-       "note": "철도설계기준의 커터붐 기계굴착과 FHWA 6.4.3의 붐 장착 회전헤드로 임의 단면을 절삭하는 설명에 부합."
+       "note": "Ozfirat의 Acta Montanistica Slovaca 논문(2015) 99쪽 M8은 로드헤더를 회전 커터헤드가 달린 붐으로 굴착하는 부분단면 장비로 정의하고, 미네소타 DNR 공개 Tamarack EAW 24쪽·575~578행은 부분단면 굴착과 붐 끝 회전헤드를 함께 기술하며, 미 DOT CAIT-UTC-REG63 PDF9쪽도 partial face boring machine으로 명명한다."
       },
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/construction/DC/CIGCDC710008/CIGCDC710008.pdf",
-        "https://www.codil.or.kr/filebank/construction/DC/CIGCDC510045/CIGCDC510045.pdf"
+        "https://www.ksrm.net/articles/xml/nDYW/",
+        "https://www.kais99.org/jkais/journal/Vol16No5/p14/6p0p/6p0p.pdf"
        ],
-       "note": "철도설계기준·터널설계기준의 기계굴착 정의에서 브레이커를 암반 굴착장비로 명시."
+       "note": "[1] 한국암반공학회 2019년 ‘진동기반 하중 추정기법의 이론 및 암반 천공용 유압 브레이커 적용사례’ 1절·3.1절은 터널굴착에 쓰는 피스톤·치즐의 타격 파쇄를, [2] 한국산학기술학회 2015년 ‘초대형 유압브레이커 개발’ 3081쪽 서론은 유압 피스톤이 치즐을 쳐 충격력으로 암반을 파쇄하는 원리와 굴삭기 부착 사용을 설명한다."
       },
       {
        "verdict": "일치",
@@ -10253,10 +10256,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK220245/OTKCRK220245.pdf",
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK240379/OTKCRK240379.pdf"
+        "https://www.michigan.gov/treasury/-/media/Project/Websites/treasury/STC/Assessors-Manual/Volume-I---2014/Glossary.pdf?hash=B708EB04DA034DEE07BFD86177E7233E&rev=d7464e6f13f047f7b923915470185bbc",
+        "https://masonryadvisorycouncil.org/brick-veneers/"
        ],
-       "note": "국토안전관리원 보고서 4장의 이중 외벽 마감과 국토부 가이드 3.2의 외벽 고정형 벽돌 마감 설명에 부합."
+       "note": "미시간주 평가 지침 용어집은 벽체에 붙이는 비내력 벽돌층을, Masonry Advisory Council은 구조 배면에 결속된 외부 마감용 비내력 벽돌 베니어를 설명한다."
       },
       {
        "verdict": "일치",
@@ -10313,11 +10316,11 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK240379/OTKCRK240379.pdf",
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK220245/OTKCRK220245.pdf",
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK220067/OTKCRK220067.pdf"
+        "https://www.gobrick.com/media/file/28-brick-veneer-wood-stud-walls.pdf",
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100HF07.TXT",
+        "https://www.lbp.govt.nz/assets/lbp/documents/complaints/mckay-2022-cb25957-substantive-decision.pdf"
        ],
-       "note": "국토부 가이드의 배수·줄눈 시공, 마감재 매뉴얼의 정기관찰 및 보강연구의 방수·줄눈 보수에 부합."
+       "note": "BIA Technical Note 28의 Flashing·Weeps 및 Mortar·Maintenance(8·17쪽)는 방수·배수, 가로·세로줄눈 모르타르 완전충전, 정기관찰을 명시하고, EPA Moisture Control Guidance 38~44·93~94쪽은 외벽 방수·배수와 모르타르 열화·벽돌 균열·배수공의 정기점검·보수를 설명하며, 뉴질랜드 BPB CB25957 결정문 33~34항은 치장벽돌 줄눈 모르타르 미충전이 기준 위반임을 별도로 확인한다; 충전은 줄눈 대상으로 읽으며 통기층·배수공은 막지 않는다."
       }
      ]
     }
@@ -10722,10 +10725,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/construction/DC/CIGCDCD90102/CIGCDCD90102.pdf",
-        "https://www.codil.or.kr/filebank/original/RK/OTKCRK180826/OTKCRK180826.pdf"
+        "https://civilengr.kr/doc/KDS/118020",
+        "https://web1.eng.famu.fsu.edu/~tawfiq/Geotech%20Design%20Spring%202024/Module-3%20Retaining%20Walls/Retaining%20Walls.pdf"
        ],
-       "note": "비탈면 설계기준 §13.3.3(1)과 옹벽 유지관리매뉴얼 §5.6.4가 수평하중에 대한 기초의 수평저항을 검토한다."
+       "note": "① KDS 11 80 20 전재본 4.3.1은 기대기옹벽의 수평하중을 기초의 수평저항력이 지지하도록 한다. ② FAMU-FSU 대학 강의 I. External Stability, 1-Sliding은 저면의 마찰·점착에 의한 전단저항과 활동력의 비를 계산한다. 저면 전단저항은 기초 수평저항을 설명하는 공학적 표현이므로 단순한 문구 차이를 오류로 보지 않는다."
       },
       {
        "verdict": "일치",
@@ -13330,28 +13333,27 @@
       {
        "verdict": "일치",
        "src": [
-        "https://files-scs.pstatic.net/2024/12/09/PM1mvDhXQy/%EA%B1%B0%ED%91%B8%EC%A7%91%20%EB%B0%8F%20%EB%8F%99%EB%B0%94%EB%A6%AC%20%ED%95%B4%EC%B2%B4%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8.pdf",
-        "https://contents.kocw.net/KOCW/document/2015/hankyong/yikyujin/5.pdf"
+        "https://rdso.indianrailways.gov.in/uploads/files/Pamphlet%20on%20Requirements%20of%20Rapid%20Hardening%20Portland%20Cement%20as%20per%20IS%208041.pdf",
+        "https://www.fao.org/4/s1250e/s1250e07.htm"
        ],
-       "note": "국토교통부 해체 가이드라인 부록 표 3.3-2와 한경대 강의의 존치기간 표 모두 시멘트 종류별 해체시기 차이를 제시한다."
+       "note": "인도 철도부 CAMTECH/C/2022/RHPC/1.0 첫쪽은 조강시멘트가 보통시멘트보다 빠르게 강도를 발현하여 조기 거푸집 해체에 쓰인다고 설명하고, FAO Farm structures 3장 Cement의 Ordinary·Rapid-hardening 항목도 두 종류의 강도발현 차이와 조기 탈형·재하의 관계를 직접 설명한다."
       },
       {
        "verdict": "일치",
        "src": [
-        "https://files-scs.pstatic.net/2024/12/09/PM1mvDhXQy/%EA%B1%B0%ED%91%B8%EC%A7%91%20%EB%B0%8F%20%EB%8F%99%EB%B0%94%EB%A6%AC%20%ED%95%B4%EC%B2%B4%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8.pdf",
-        "https://contents.kocw.net/KOCW/document/2015/hankyong/yikyujin/5.pdf",
-        "https://ebid.kier.re.kr/download.do?file_gb=E1&file_id=51516"
+        "https://www.jsce-int.org/system/files/JGC16_Standard_Specifications_Materials_and_Construction_1.1.pdf",
+        "https://www.concrete.org/Portals/0/Files/PDF/Previews/306R-16_preview.pdf"
        ],
-       "note": "가이드라인·한경대 자료는 평균기온별 재령 차이를, 에너지기술연구원 시방서는 보양방법·상태에 따른 존치기간 조정을 제시한다."
+       "note": "[1] 일본토목학회 ‘Standard Specifications for Concrete Structures-2007’ 2.4절은 외기온·양생방법에 따른 강도발현을 탈형·동바리 해체 시 고려하도록 하고, 표 8.2.1·8.3절은 일평균기온별 기간과 급열·보온에 의한 경화온도 유지를 설명한다; [2] ACI 306R-16 3.2(b)·4.2절은 보온·가열로 필요한 온도를 유지하여 탈형 요구강도에 도달하도록 권고한다."
       },
       {
        "verdict": "일치",
        "src": [
-        "https://files-scs.pstatic.net/2024/12/09/PM1mvDhXQy/%EA%B1%B0%ED%91%B8%EC%A7%91%20%EB%B0%8F%20%EB%8F%99%EB%B0%94%EB%A6%AC%20%ED%95%B4%EC%B2%B4%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8.pdf",
-        "https://www.lpsc.gov.in/docs/SCHEDULE_I.pdf",
-        "https://ebid.kier.re.kr/download.do?file_gb=E1&file_id=51516"
+        "https://indianrailways.gov.in/railwayboard/uploads/directorate/eff_res/camtech/Civil%20Engineering/YearWise/Handbook%20on%20Formwork%20for%20Buildings%282%29.pdf",
+        "https://www.ps-philgeps.gov.ph/home/images/BAC/ForeignAssitedProjects/09272017/4_Part%202_b.pdf",
+        "https://kcsc.sjxtech.kr/doc/KCS/215005"
        ],
-       "note": "국토교통부 해체 가이드라인은 부재 크기·하중·강도를, 인도 정부 시방서 5.2.3.6.1은 경간·부재·시공하중에 따른 차이를 확인한다."
+       "note": "① 인도철도 Formwork for Buildings 36쪽은 부재 형상·경간과 자중·추가하중을 지지할 강도를 해체조건으로 명시한다. ② 필리핀 정부 철도공사 시방서 TS-49 표4.4.1은 부재·경간별 기간 및 시공하중 지지부재의 요구 압축강도를 규정한다. ③ KCS 21 50 05 전재본 3.9.1~3도 하중·경간·소정강도를 확인하므로 요구강도는 실제 해체에 필요한 강도라는 뜻으로 일치한다."
       }
      ]
     }
@@ -13934,10 +13936,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/original/RK/OTMCRK500293/OTMCRK500293.pdf",
-        "https://resource.midasuser.com/hubfs/Part%201_PSC%20%EA%B5%90%EB%9F%89%EC%9D%98%20%EC%9D%B4%ED%95%B4.pdf"
+        "https://www.midasuser.com.tw/midas/loadFtp/classLoad/Civil/20210420-19.%20FSM%20General.pdf",
+        "https://dor.gov.np/qrdc/publication/qrdc-others/force/irc-sp-137-2-23-guidelines-for-design-construction-and-maintenance-of-extradosed-bridges"
        ],
-       "note": "건설교통부 연구보고서 192쪽은 타설 경간 전체의 동바리 지지를, MIDAS 공법 비교표는 지상 지지 후 현장타설을 설명한다."
+       "note": "MIDAS FSM 설명은 경간 전체의 거푸집·동바리 지지를, IRC 교량 지침 6.3.2는 현장타설 바닥판 거푸집의 임시 지보를 설명한다."
       },
       {
        "verdict": "일치",
@@ -13985,10 +13987,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.codil.or.kr/filebank/original/RK/OTMCRK500293/OTMCRK500293.pdf",
-        "https://www.structuraltechnologies.com/wp-content/uploads/2018/02/PT_Incremental_Launching_Method.pdf"
+        "https://www.jbic.go.jp/en/business-areas/environment/projects/image/60571_11.pdf",
+        "https://onlinepubs.trb.org/Onlinepubs/trr/1982/871/871-002.pdf"
        ],
-       "note": "연구보고서 198쪽과 VSL 기술보고서 1.1은 교대 후방에서 세그먼트를 순차 제작·연결한 뒤 교축방향으로 압출하는 방식이다."
+       "note": "JBIC 수록 시공성 보고서 2.7.1.4와 TRB 교량 시공 논문은 교대 뒤 세그먼트 타설과 반복 압출을 설명한다."
       },
       {
        "verdict": "수정",
@@ -14966,10 +14968,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://www.kgsjournal.org/articles/xml/GKGK/",
-        "https://kp.uky.edu/knowledge-portal/articles/landslide/"
+        "https://www.intechopen.com/chapters/78680",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0342903"
        ],
-       "note": "사면안전율 논문 4장 (2)는 높이 증가 시 안전율 저하를, 켄터키대 자료 4.1은 절토·성토 높이 감소를 안정대책으로 제시한다; 같은 토질·경사조건의 비교다."
+       "note": "IntechOpen의 Performance Evaluation of Geometric Modification… 7절·그림7B 해설은 사면 높이 증가가 파괴면 위 자중,즉 활동력을 증가시킨다고 명시하고, PLOS One Ren 등(2026) Results and discussion의 Parameter sensitivity analysis는 높이 증가가 사면 자중의 활동방향 성분을 증대시킨다고 직접 설명한다; 다른 지반·형상조건을 통제한 높이 비교이며 안전율 저하만으로 활동력 증가를 추정한 판정이 아니다."
       },
       {
        "verdict": "일치",
@@ -15233,9 +15235,9 @@
        "verdict": "일치",
        "src": [
         "https://m.jbsafety.co.kr/bbs_shop/file_download.php?board_code=4_3&board_idx=9706&sel_no=",
-        "https://opinion.lawmaking.go.kr/gcom/admpp/46106?announceType=TYPE6&blockStartPage=1&btnType=1&cptOfiOrgCd=1400000&mappingAdmRulSeq=2000000323320&opYn=Y&pageIndex=4&stYdFmt=2022.+9.+1."
+        "https://www.govinfo.gov/content/pkg/GOVPUB-TD2-PURL-gpo160263/pdf/GOVPUB-TD2-PURL-gpo160263.pdf"
        ],
-       "note": "KOSHA GUIDE C-41-2011 12.4(1)·그림 2는 삼각프레임 지지를, 국토부 KCS 24 11 30 제정 행정예고안 3.14는 전도방지 스트럿 설치를 제시한다; 후자는 확정 기준으로 인용하지 않았다."
+       "note": "① KOSHA GUIDE C-41-2011 12.4(1)·그림2는 거치 직후 삼각프레임으로 PSC거더를 옆에서 받쳐 전도를 방지하는 단면도를 제시한다. ② FHWA 교량 시공 중 구조안정 매뉴얼 3.32~3.34쪽·그림3-27~3-32는 거더 측방의 인장·압축 버팀과 압축재 고정 상세를 제시한다. 측면 지지는 도해로 확인되며 행정예고안을 확정 기준으로 인용하지 않는다."
       },
       {
        "verdict": "일치",
@@ -15248,10 +15250,10 @@
       {
        "verdict": "일치",
        "src": [
-        "https://m.jbsafety.co.kr/bbs_shop/file_download.php?board_code=4_3&board_idx=9706&sel_no=",
-        "https://opinion.lawmaking.go.kr/gcom/admpp/46106?announceType=TYPE6&blockStartPage=1&btnType=1&cptOfiOrgCd=1400000&mappingAdmRulSeq=2000000323320&opYn=Y&pageIndex=4&stYdFmt=2022.+9.+1."
+        "https://rosap.ntl.bts.gov/view/dot/56879/dot_56879_DS1.pdf",
+        "https://www.fhwa.dot.gov/bridge/pubs/nhi15044.pdf"
        ],
-       "note": "KOSHA GUIDE C-41-2011 12.4(3)·(7)은 거더 간 철근 연결·전체 결속을, 국토부 행정예고안 3.14는 단부가로보 철근 용접·중간가로보 시공에 의한 고정을 제시한다."
+       "note": "미 교통부 보고서 2.6.2.1은 인접 거더 간 임시 가로버팀, FHWA 교재는 인접 거더 간 가로프레임 연결을 제시한다."
       }
      ]
     },
@@ -17189,5 +17191,5 @@
   }
  ],
  "verified_at": "2026-10-29",
- "xchecked_at": "2026-11-06"
+ "xchecked_at": "2026-11-07"
 }
