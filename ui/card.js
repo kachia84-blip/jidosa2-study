@@ -290,6 +290,7 @@ function finishReading(root, ctx, session, item, card, action, status) {
   ctx.state.daily = {
     date: today,
     newDone: (previousDaily.date === today ? previousDaily.newDone : 0) + 1,
+    reviewDone: previousDaily.date === today ? previousDaily.reviewDone ?? 0 : 0,
   };
   try {
     ctx.save();
@@ -351,6 +352,12 @@ function score(root, ctx, session, item, card, conf, missed, container, action, 
   const stage = card.stage;
   const previous = JSON.parse(JSON.stringify(ctx.state));
   try {
+    if (card.fsrs) { // 복습(이미 채점 기록이 있는 문항)이면 오늘 복습 수를 센다
+      const today = dayKey(now), daily = ctx.state.daily;
+      ctx.state.daily = daily.date === today
+        ? { ...daily, reviewDone: (daily.reviewDone ?? 0) + 1 }
+        : { date: today, newDone: 0, reviewDone: 1 };
+    }
     card.fsrs = review(card.fsrs, grade, now, ctx.state.settings.retention);
     card.stage = nextStage(stage, passed);
     recordResult(ctx.state, item.id, { stage, recalled, total: item.total,

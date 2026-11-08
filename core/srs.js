@@ -121,18 +121,35 @@ export function pairUp(ids, topicOf, size = 2) {
   return result;
 }
 
+// 하루 복습 상한: 오늘의 학습을 끝낸 날이 20번이면 4개, 30번이면 5개…(19번까지는 3개, 최대 10개).
+export function reviewCap(rounds = 0) {
+  return Math.min(10, Math.max(3, 2 + Math.floor(rounds / 10)));
+}
+
+// 문항별 모름·애매 비율(기록이 없으면 0).
+export function weakRatio(log, id) {
+  let n = 0, weak = 0;
+  for (const entry of log) {
+    if (entry.id !== id) continue;
+    n += 1;
+    if (entry.conf === "none" || entry.conf === "unsure") weak += 1;
+  }
+  return n ? weak / n : 0;
+}
+
 export function pickToday(items, state, now) {
   const byId = new Map(items.map(item => [item.id, item]));
   const topicOf = id => byId.get(id).topic;
   const cardOf = id => Object.hasOwn(state.cards, id) ? state.cards[id] : undefined;
-  const due = items.filter(item => cardOf(item.id)?.fsrs?.due <= now)
-    .sort((a, b) => cardOf(a.id).fsrs.due - cardOf(b.id).fsrs.due
+  const ratio = new Map(items.map(item => [item.id, weakRatio(state.log, item.id)]));
+  const allDue = items.filter(item => cardOf(item.id)?.fsrs?.due <= now)
+    .sort((a, b) => ratio.get(b.id) - ratio.get(a.id)
+      || cardOf(a.id).fsrs.due - cardOf(b.id).fsrs.due
       || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-  const illusion = item => cardOf(item.id).lastConf === "sure" && cardOf(item.id).lastPassed === false;
-  const urgent = interleave(due.filter(illusion).map(item => item.id), topicOf);
-  const regular = arrange(due.filter(item => !illusion(item)).map(item => item.id), topicOf,
-    urgent.length ? topicOf(urgent[urgent.length - 1]) : Symbol("시작"));
-  const done = state.daily.date === dayKey(now) ? state.daily.newDone : 0;
+  const sameDay = state.daily.date === dayKey(now);
+  const reviewLeft = Math.max(0, reviewCap(state.rounds?.n) - (sameDay ? state.daily.reviewDone ?? 0 : 0));
+  const due = arrange(allDue.slice(0, reviewLeft).map(item => item.id), topicOf, Symbol("시작"));
+  const done = sameDay ? state.daily.newDone : 0;
   const limit = Math.max(0, state.settings.newPerDay - done);
   const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
   // 읽기(1단계)는 끝냈지만 아직 확인 전인 문항: 앱을 껐다 켜도 이어서 하도록 따로 챙긴다(새 문항 한도와 무관).
@@ -143,7 +160,7 @@ export function pickToday(items, state, now) {
       || compare(a.topic, b.topic) || compare(a.id, b.id))
     .map(item => item.id);
   const freshPicked = pairUp(fresh, topicOf).slice(0, limit);
-  return { due: [...urgent, ...regular], started, fresh: freshPicked };
+  return { due, dueTotal: allDue.length, started, fresh: freshPicked };
 }
 
 // 지금 카드가 공부 순서의 어느 칸인지: 복습(채점 기록 있음) → 확인(읽고 아직 채점 전) → 새 문제(처음 읽기).

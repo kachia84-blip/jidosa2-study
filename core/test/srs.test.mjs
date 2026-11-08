@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { pairUp, review, retrievability, gradeOf, nextStage, interleave, pickToday } from "../srs.js";
+import { pairUp, review, retrievability, gradeOf, nextStage, interleave, pickToday, reviewCap } from "../srs.js";
 import { loadState, getCard, dayKey } from "../store.js";
 
 const DAY = 86_400_000;
@@ -128,7 +128,7 @@ test("interleave: 모든 소규모 주제 분포에서 연속 중복 횟수가 �
   }
 });
 
-test("pickToday: 착각 우선, 오래된 복습 순서와 주제 교대, 오늘 새 문항 제한", () => {
+test("pickToday: 복습은 모름·애매 비율 높은 순으로 하루 상한만큼, 오늘 새 문항 제한", () => {
   const state = loadState({ getItem: () => null });
   state.settings.newPerDay = 3;
   state.daily = { date: dayKey(now), newDone: 1 };
@@ -142,17 +142,30 @@ test("pickToday: 착각 우선, 오래된 복습 순서와 주제 교대, 오늘
     { id: "new-a1", topic: "A", status: "확정" },
   ];
   for (const [id, elapsed] of [["ua", 1], ["ub", 2], ["ra", 8], ["rb", 7], ["rc", 6], ["later", -1]]) {
-    const card = getCard(state, id);
-    card.fsrs = { ...old, due: now - elapsed * DAY };
-    if (id.startsWith("u")) { card.lastConf = "sure"; card.lastPassed = false; }
+    getCard(state, id).fsrs = { ...old, due: now - elapsed * DAY };
   }
+  const log = (id, conf) => state.log.push({ t: now - DAY, id, stage: 2, recalled: 1, total: 2, conf, passed: false });
+  log("ua", "none"); log("ua", "unsure");          // 100%
+  log("rc", "none"); log("rc", "sure");            // 50%
+  log("ub", "unsure"); log("ub", "sure"); log("ub", "sure"); // 33%
+  log("ra", "sure");                               // 0%
   getCard(state, "new-a1");
   getCard(state, "orphan").fsrs = { ...old, due: 0 };
   const before = structuredClone({ items, state });
   assert.deepEqual(pickToday(items, state, now), {
-    due: ["ub", "ua", "rb", "ra", "rc"], started: [], fresh: ["new-a1", "new-a2"],
+    due: ["ua", "rc", "ub"], dueTotal: 5, started: [], fresh: ["new-a1", "new-a2"],
   });
   assert.deepEqual({ items, state }, before);
+  state.daily.reviewDone = 2; // 오늘 이미 2개 복습 → 1개만 남음
+  assert.deepEqual(pickToday(items, state, now).due, ["ua"]);
+  state.daily.reviewDone = 0;
+  state.rounds = { n: 20, last: "" }; // 20번 끝냄 → 4개
+  assert.deepEqual(pickToday(items, state, now).due, ["ua", "rc", "ub", "ra"]);
+});
+
+test("reviewCap: 19번까지 3개, 10번마다 1개씩, 최대 10개", () => {
+  assert.deepEqual([0, 10, 19, 20, 29, 30, 40, 99, 100, 500].map(reviewCap), [3, 3, 3, 4, 4, 5, 6, 10, 10, 10]);
+  assert.equal(reviewCap(undefined), 3);
 });
 
 test("pickToday: 날짜 변경 시 새 문항 한도를 복원하고 한도 초과 시 중단한다", () => {
@@ -164,12 +177,12 @@ test("pickToday: 날짜 변경 시 새 문항 한도를 복원하고 한도 초�
     { id: "b", topic: "A", status: "확정" },
     { id: "a", topic: "A", status: "확정" },
   ];
-  assert.deepEqual(pickToday(items, state, now), { due: [], started: [], fresh: [] });
+  assert.deepEqual(pickToday(items, state, now), { due: [], dueTotal: 0, started: [], fresh: [] });
   state.daily.date = "2026-10-28";
-  assert.deepEqual(pickToday(items, state, now), { due: [], started: [], fresh: ["a", "b"] });
+  assert.deepEqual(pickToday(items, state, now), { due: [], dueTotal: 0, started: [], fresh: ["a", "b"] });
   state.settings.newPerDay = 5;
   assert.deepEqual(pickToday(items, state, now).fresh, ["a", "b", "z"]);
-  assert.deepEqual(pickToday([], state, now), { due: [], started: [], fresh: [] });
+  assert.deepEqual(pickToday([], state, now), { due: [], dueTotal: 0, started: [], fresh: [] });
 });
 
 test("pickToday: 만기가 정확히 현재인 카드도 포함하고 같은 주제가 없으면 만기순이다", () => {
@@ -178,7 +191,7 @@ test("pickToday: 만기가 정확히 현재인 카드도 포함하고 같은 주
   for (const [id, due] of [["a", now - DAY], ["b", now - 2 * DAY], ["c", now]]) {
     getCard(state, id).fsrs = { ...old, due };
   }
-  assert.deepEqual(pickToday(items, state, now), { due: ["b", "a", "c"], started: [], fresh: [] });
+  assert.deepEqual(pickToday(items, state, now), { due: ["b", "a", "c"], dueTotal: 3, started: [], fresh: [] });
 });
 
 test("pickToday: 읽기만 끝낸 문항은 이어서 하고 새 문항으로 다시 뽑지 않는다", () => {
@@ -188,7 +201,7 @@ test("pickToday: 읽기만 끝낸 문항은 이어서 하고 새 문항으로 �
   const items = ["a", "b", "c", "d"].map(id => ({ id, topic: "A", status: "확정" }));
   getCard(state, "a").stage = 2;
   getCard(state, "b").stage = 2;
-  assert.deepEqual(pickToday(items, state, now), { due: [], started: ["a", "b"], fresh: ["c"] });
+  assert.deepEqual(pickToday(items, state, now), { due: [], dueTotal: 0, started: ["a", "b"], fresh: ["c"] });
 });
 
 test("pickToday: 새 문항은 같은 주제 2개씩 짝, 짝끼리는 주제를 돌아가며", () => {

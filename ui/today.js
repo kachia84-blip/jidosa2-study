@@ -1,6 +1,6 @@
 import { withIcon } from "./icons.js";
 import { dayKey, exportState, importState, isMemorized } from "../core/store.js";
-import { pickToday } from "../core/srs.js";
+import { pickToday, reviewCap } from "../core/srs.js";
 import { illusions } from "../core/confidence.js";
 import { showSchedule } from "./schedule.js";
 
@@ -34,7 +34,9 @@ function extraFresh(ctx, now) {
 // 오늘 푸는 순서: 복습 → 읽은 문제 확인 → 새 문제 읽기(새 문제는 읽고 나면 이번 공부 끝에 한 번 더 확인).
 function steps(today) {
   const list = el("ol", null, "steps");
-  [["1", "복습", today.due.length, "기억이 흐려질 때가 된 문제"],
+  [["1", "복습", today.due.length, today.dueTotal > today.due.length
+    ? `밀린 ${today.dueTotal}개 중 모름·애매가 잦은 문제부터`
+    : "기억이 흐려질 때가 된 문제"],
     ["2", "읽은 문제 확인", today.started.length, "읽기만 하고 아직 채점 안 한 문제"],
     ["3", "새 문제 읽기", today.fresh.length, "처음 보는 문제, 읽고 나면 끝에서 다시 확인"]]
     .forEach(([n, name, k, why]) => {
@@ -47,6 +49,26 @@ function steps(today) {
   return list;
 }
 
+// 오늘 할 일을 다 끝낸 날을 1번으로 센다(하루 한 번만). 10번마다 하루 복습 상한이 1개씩 늘어난다.
+function countRound(ctx, now) {
+  const day = dayKey(now);
+  const rounds = ctx.state.rounds ?? { n: 0, last: "" };
+  const daily = ctx.state.daily;
+  const studied = ctx.state.log.some(entry => dayKey(entry.t) === day)
+    || (daily.date === day && (daily.newDone > 0 || daily.reviewDone > 0));
+  if (!studied || rounds.last === day) return;
+  ctx.state.rounds = { n: rounds.n + 1, last: day };
+  try { ctx.save(); } catch { ctx.state.rounds = rounds; }
+}
+
+function roundNote(ctx) {
+  const n = ctx.state.rounds?.n ?? 0;
+  const cap = reviewCap(n);
+  const next = Math.max(20, (Math.floor(n / 10) + 1) * 10);
+  return `오늘의 학습 ${n}번 끝냄 · 하루 복습 최대 ${cap}개`
+    + (cap < 10 ? ` (${next}번이면 ${cap + 1}개)` : "");
+}
+
 function showOverview(root, ctx, today, now) {
   const date = new Date(now).toLocaleDateString("ko-KR", {
     year: "numeric", month: "long", day: "numeric", weekday: "long",
@@ -56,13 +78,14 @@ function showOverview(root, ctx, today, now) {
     const card = ctx.state.cards[item.id];
     return card && isMemorized(card);
   }).length;
-  root.append(steps(today), el("p", `외운 문항 ${count}/126`, "muted"));
+  root.append(steps(today), el("p", `외운 문항 ${count}/126`, "muted"), el("p", roundNote(ctx), "muted"));
   const queue = [...today.due, ...today.started, ...today.fresh];
   if (queue.length) {
     const label = today.started.length || ctx.state.daily.newDone ? "이어서 공부하기" : "오늘 공부 시작";
     root.append(button(label, () => start(ctx, queue), "btn primary wide"));
     return;
   }
+  countRound(ctx, now);
   root.append(el("p", "오늘 할 일 끝", "notice"));
   const more = extraFresh(ctx, now);
   const add = button("새 문항 더 하기", () => start(ctx, more), "btn primary wide");
