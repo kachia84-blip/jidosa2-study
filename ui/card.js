@@ -40,7 +40,7 @@ function createSession(ctx) {
   return {
     queue: one ? queue.slice(index, index + 1) : queue,
     index: one ? 0 : index,
-    one, passed: 0, total: 0, started: ctx.now(),
+    one, drill: ctx.params?.mode === "drill", passed: 0, total: 0, started: ctx.now(),
   };
 }
 
@@ -264,13 +264,14 @@ function showSummary(root, ctx, session) {
     el("p", `통과 ${session.passed} / 전체 ${session.total}`),
     el("p", `걸린 시간 ${Math.floor(elapsed / 60)}분 ${elapsed % 60}초`, "muted"),
     el("p", "10~15분 했으면 5분 쉬세요.", "notice"),
-    button("오늘로", () => ctx.go("today", {}), "btn primary"));
+    session.drill ? button("이어서 복습", () => ctx.go("drill", {}), "btn primary")
+      : button("오늘로", () => ctx.go("today", {}), "btn primary"));
 }
 
 // 지금 위치를 주소에 적어 둔다(새로 고침해도 같은 문제에서 이어서). hashchange는 일으키지 않는다.
 function remember(session) {
   if (session.one) return;
-  history.replaceState(null, "", toHash("card", { queue: session.queue.join(","), i: session.index, mode: "review" }));
+  history.replaceState(null, "", toHash("card", { queue: session.queue.join(","), i: session.index, mode: session.drill ? "drill" : "review" }));
 }
 
 function advance(root, ctx, session) {
@@ -352,7 +353,7 @@ function score(root, ctx, session, item, card, conf, missed, container, action, 
   const stage = card.stage;
   const previous = JSON.parse(JSON.stringify(ctx.state));
   try {
-    if (card.fsrs) { // 복습(이미 채점 기록이 있는 문항)이면 오늘 복습 수를 센다
+    if (card.fsrs && !session.drill) { // 오늘의 공부에서 한 복습(이미 채점 기록이 있는 문항)이면 오늘 복습 수를 센다
       const today = dayKey(now), daily = ctx.state.daily;
       ctx.state.daily = daily.date === today
         ? { ...daily, reviewDone: (daily.reviewDone ?? 0) + 1 }

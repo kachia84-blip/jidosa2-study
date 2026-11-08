@@ -6,8 +6,9 @@ import * as card from "./ui/card.js";
 import * as browse from "./ui/browse.js";
 import * as stats from "./ui/stats.js";
 import * as memo from "./ui/memo.js";
+import * as drill from "./ui/drill.js";
 
-const VIEWS = { today, memo, card, browse, stats };
+const VIEWS = { today, drill, memo, card, browse, stats };
 const root = document.getElementById("view");
 
 function go(route, params = {}) {
