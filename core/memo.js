@@ -1,4 +1,5 @@
 // 암기 탭: 풀어 본 문항과 그 문항의 두문자·암기법을 모은다.
+import { weakRatio } from "./srs.js";
 
 // 한 번이라도 읽었거나(단계 2 이상) 채점한 문항. 최근에 채점한 것부터, 읽기만 한 것은 뒤에.
 export function studiedItems(items, state) {
@@ -28,4 +29,13 @@ export function memoOf(item) {
     .filter(part => part.mnemonic)
     .map(part => ({ label: part.label || "", mnemonic: part.mnemonic, phrase: part.phrase || "" }));
   return { mnemonics, method: studySection(item.study, "암기법") };
+}
+
+// 잘 모르는 순: 모름·애매 비율이 높은 것부터, 마지막 채점에서 못 넘긴 것을 앞에, 같으면 최근에 푼 순서(studiedItems 순서 유지).
+export function weakFirst(studied, state) {
+  const score = item => weakRatio(state.log, item.id)
+    + (state.cards[item.id]?.lastPassed === false ? 0.5 : 0);
+  return studied.map((item, i) => ({ item, i, s: score(item) }))
+    .sort((a, b) => b.s - a.s || a.i - b.i)
+    .map(x => x.item);
 }

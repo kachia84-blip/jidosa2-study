@@ -29,3 +29,12 @@ test("memoOf: 두문자 있는 part만", () => {
   assert.deepEqual(memo.mnemonics, [{ label: "1) 장점", mnemonic: "품시안", phrase: "문장" }]);
   assert.equal(memo.method, "- 묶기");
 });
+
+test("weakFirst: 모름·애매 비율 높은 순, 마지막에 못 넘긴 것 가산, 같으면 원래(최근) 순서", async () => {
+  const { weakFirst } = await import("../memo.js");
+  const items = ["a", "b", "c", "d"].map(id => ({ id }));
+  const state = { cards: { d: { lastPassed: false } }, log: [] };
+  const log = (id, conf) => state.log.push({ t: 1, id, conf });
+  log("a", "sure"); log("b", "none"); log("c", "unsure"); log("c", "sure"); log("d", "sure");
+  assert.deepEqual(weakFirst(items, state).map(x => x.id), ["b", "c", "d", "a"]);
+});

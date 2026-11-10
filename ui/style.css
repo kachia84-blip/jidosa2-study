@@ -348,6 +348,9 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 
 /* 암기 탭 */
 .memo-card { margin-bottom: 14px; }
+.memo-search { width: 100%; min-height: 44px; margin: 4px 0 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: inherit; font: inherit; }
+.memo-q p { margin: 0; }
+.memo-q .subquestions { margin: 6px 0 0; }
 .memo-mn { margin: 4px 0 8px; padding: 10px 14px; border-radius: 12px; background: var(--primary-soft); }
 .memo-mn-line { margin: 4px 0; line-height: 1.6; }
 .memo-part { display: block; color: var(--muted); font-size: .8rem; }
