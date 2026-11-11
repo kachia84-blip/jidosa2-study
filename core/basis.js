@@ -5,6 +5,7 @@ const RULE_RE = /([가-힣]+표준안전작업지침|보호구 안전인증 고�
 
 function linkLabel(url) {
   if (url.includes("kosha.or.kr")) return "KOSHA 자료 받기";
+  if (!url.includes("law.go.kr")) return "기준 원문 열기";  // KDS·KCS 대조 링크(재게시본·옛 기준 PDF)
   return url.includes("flDownload") ? "별표 원문 받기" : "법제처 원문 열기";
 }
 

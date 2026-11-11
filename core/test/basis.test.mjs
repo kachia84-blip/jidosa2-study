@@ -15,6 +15,11 @@ test("basisPieces: 별표 파일 주소는 받기 링크", () => {
   assert.equal(pieces[1].s, "별표 원문 받기");
 });
 
+test("basisPieces: 법제처가 아닌 주소는 기준 원문 링크", () => {
+  const pieces = basisPieces("국가건설기준 원문 대조: KDS 11 80 20 4.3.2(1) (원문: https://civilengr.kr/doc/KDS/118020)");
+  assert.deepEqual(pieces[1], { t: "link", href: "https://civilengr.kr/doc/KDS/118020", s: "기준 원문 열기" });
+});
+
 test("basisPieces: 주소가 없으면 조문 주소를 만든다", () => {
   assert.equal(lawUrl("산업안전보건기준에 관한 규칙 제619조의2·별표"), "https://www.law.go.kr/법령/산업안전보건기준에관한규칙/제619조의2");
   assert.equal(basisPieces("산업안전보건법 제82조")[1].href, "https://www.law.go.kr/법령/산업안전보건법/제82조");

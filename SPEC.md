@@ -21,7 +21,7 @@ Q = `{"id":"2013-01","year":2013,"round":3,"no":1,"type":"단답"|"논술필수"
 
 answers.json `{"version":1,"items":[A]}`
 A = `{"id":"2013-01","parts":[P],"status":"확정"|"초안","note":"…"}`
-P = `{"label":"" | "1)","items":[{"text":"…","key":["핵심어",…]}],"mnemonic":"방·가·사","basis":"근거 조문 또는 교재(…)","verified":"원문일치"?}`
+P = `{"label":"" | "1)","items":[{"text":"…","key":["핵심어",…]}],"mnemonic":"방·가·사","basis":"근거 조문 또는 교재(…)","verified":"원문일치"|"기준원문일치"?}` (기준원문일치 = 공학 part를 KDS·KCS 원문과 모든 줄 대조, part.kc에 줄별 결과)
 key는 text 안에 그대로 들어 있는 부분 문자열이다(빈 배열일 수도 있음).
 
 ## core/data.js
