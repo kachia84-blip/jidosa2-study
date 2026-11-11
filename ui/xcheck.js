@@ -15,7 +15,7 @@ function host(url) {
 }
 
 export function appendXcheck(parent, part) {
-  if (!part.xcheck?.some(Boolean)) return;
+  if (part.verified === "기준원문일치" || !part.xcheck?.some(Boolean)) return;  // KDS·KCS 원문 대조가 예전 출처 확인을 대신함
   const details = el("details", null, "basis xcheck");
   const missing = part.xcheck.filter(c => c?.verdict === "근거없음").length;
   details.append(el("summary", withIcon(missing ? `출처 확인 · ${missing}개 못 찾음` : "출처 확인")));
