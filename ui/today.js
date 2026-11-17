@@ -42,7 +42,7 @@ function steps(today) {
     .forEach(([n, name, k, why]) => {
       const li = el("li", null, k ? "" : "zero");
       const text = el("span");
-      text.append(el("span", `${name} ${k}개`, "step-name"), el("br"), el("span", why, "muted"));
+      text.append(el("span", `${name} ${k}개`, "step-name"), el("br"), el("span", k ? why : "오늘은 할 것 없음", "muted"));
       li.append(el("span", n, "step-n"), text);
       list.append(li);
     });
@@ -78,7 +78,9 @@ function showOverview(root, ctx, today, now) {
     const card = ctx.state.cards[item.id];
     return card && isMemorized(card);
   }).length;
-  root.append(steps(today), el("p", `외운 문항 ${count}/126`, "muted"), el("p", roundNote(ctx), "muted"));
+  const meta = el("div", null, "today-meta");
+  meta.append(el("p", `외운 문항 ${count}/126`), el("p", roundNote(ctx)));
+  root.append(steps(today), meta);
   const queue = [...today.due, ...today.started, ...today.fresh];
   if (queue.length) {
     const label = today.started.length || ctx.state.daily.newDone ? "이어서 공부하기" : "오늘 공부 시작";

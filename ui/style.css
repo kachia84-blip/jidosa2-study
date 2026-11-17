@@ -289,7 +289,7 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 
 /* 시험 일정 */
 .sched-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 8px 0 12px; padding: 12px 14px; border-radius: 12px; background: var(--primary-soft); }
-.sched-big { color: var(--primary); font-size: 1.8rem; font-weight: 700; }
+.sched-big { color: var(--primary); font-size: 1.8rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .sched-list { margin: 6px 0; padding: 0; list-style: none; }
 .sched-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .sched-dday { min-width: 4.6em; color: var(--primary); font-variant-numeric: tabular-nums; }
@@ -339,7 +339,10 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 .kind-new { background: var(--draft-soft); color: var(--draft); }
 .steps { margin: 10px 0 14px; padding: 0; list-style: none; }
 .steps li { display: flex; gap: 10px; align-items: baseline; margin: 6px 0; padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
-.steps li.zero { opacity: .55; }
+.steps li.zero .step-name { color: var(--muted); }
+.steps li.zero .step-n { background: var(--fresh); color: var(--muted); }
+.today-meta { margin: 0 0 16px; padding: 8px 12px; border-left: 2px solid var(--line); color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.today-meta p { margin: 4px 0; }
 .step-n { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: var(--surface); font-weight: 700; }
 .step-name { font-weight: 600; }
 .figure { margin: 12px 0; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
