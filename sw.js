@@ -2,7 +2,7 @@
 const CACHE = "jd2-v23";
 const SHELL = [
   "./", "index.html", "app.js", "router.js", "manifest.webmanifest", "icon.svg",
-  "core/data.js", "core/store.js", "core/srs.js", "core/mask.js", "core/confidence.js", "core/basis.js", "core/richtext.js", "ui/rich.js",
+  "core/data.js", "core/store.js", "core/srs.js", "core/mask.js", "core/confidence.js", "core/basis.js", "core/resume.js", "core/richtext.js", "ui/rich.js",
   "ui/today.js", "ui/drill.js", "core/drill.js", "ui/card.js", "ui/browse.js", "ui/stats.js", "ui/style.css", "ui/icons.js", "ui/schedule.js", "core/schedule.js", "ui/insights.js", "core/insights.js", "ui/memo.js", "core/memo.js", "ui/figures.js", "ui/xcheck.js",
   "fonts/fonts.css", "fonts/pretendard.woff2", "fonts/tf00.woff2", "fonts/tf02.woff2", "fonts/tf07.woff2", "fonts/tf08.woff2", "fonts/tf09.woff2", "fonts/tf10.woff2",
   "data/questions.json", "data/answers.json", "data/schedule.json",

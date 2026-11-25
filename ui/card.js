@@ -8,6 +8,7 @@ import { withIcon } from "./icons.js";
 import { figureFor } from "./figures.js";
 import { appendXcheck } from "./xcheck.js";
 import { toHash } from "../router.js";
+import { clearResume, saveResume } from "../core/resume.js";
 
 const STAGES = ["", "보기", "빈칸", "앞글자", "백지"];
 const CONF_LABELS = { sure: "확신", unsure: "애매", none: "모름" };
@@ -48,6 +49,11 @@ function showHeader(view, session, item, card) {
   const where = el("p", null, "kind-line");
   if (!session.one) where.append(el("span", KINDS[kindOf(card)], `kind kind-${kindOf(card)}`));
   where.append(el("span", ` ${session.index + 1} / ${session.queue.length}`, "muted"));
+  if (!session.one && !session.drill) {
+    const list = el("a", "오늘 목록", "kind-home");
+    list.href = toHash("today", { home: 1 });
+    where.append(list);
+  }
   view.append(where,
     el("p", `${item.year}년 · ${item.round}회 · ${item.no}번 · ${item.points}점`, "muted"));
   const row = el("div", null, "row");
@@ -259,6 +265,7 @@ function maskedAnswers(container, item, stage) {
 }
 
 function showSummary(root, ctx, session) {
+  if (!session.one && !session.drill) clearResume();  // 오늘 공부를 끝까지 했으면 이어할 자리 없음
   const elapsed = Math.max(0, Math.floor((ctx.now() - session.started) / 1000));
   root.replaceChildren(el("h1", withIcon("공부를 마쳤어요")),
     el("p", `통과 ${session.passed} / 전체 ${session.total}`),
@@ -272,6 +279,7 @@ function showSummary(root, ctx, session) {
 function remember(session) {
   if (session.one) return;
   history.replaceState(null, "", toHash("card", { queue: session.queue.join(","), i: session.index, mode: session.drill ? "drill" : "review" }));
+  if (!session.drill) saveResume(session.queue, session.index);  // "오늘"을 다시 누르면 여기부터
 }
 
 function advance(root, ctx, session) {
@@ -428,5 +436,7 @@ function showCard(root, ctx, session) {
 
 export function render(root, ctx) {
   root.replaceChildren();
-  showCard(root, ctx, createSession(ctx));
+  const session = createSession(ctx);
+  if (session.index < session.queue.length) remember(session);
+  showCard(root, ctx, session);
 }

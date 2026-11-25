@@ -369,3 +369,4 @@ nav.tabs a.on { background: var(--primary-soft); color: var(--primary); }
 .xcheck ol { padding-left: 20px; }
 .xcheck li { margin: 8px 0; color: var(--text, inherit); }
 .xcheck li .badge { margin-right: 4px; }
+.kind-home { float: right; font-size: 0.85em; color: inherit; opacity: 0.7; }

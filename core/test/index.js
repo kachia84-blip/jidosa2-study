@@ -10,3 +10,4 @@ import "./schedule.test.mjs";
 import "./insights.test.mjs";
 import "./memo.test.mjs";
 import "./drill.test.mjs";
+import "./resume.test.mjs";

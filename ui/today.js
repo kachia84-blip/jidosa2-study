@@ -3,6 +3,8 @@ import { dayKey, exportState, importState, isMemorized } from "../core/store.js"
 import { pickToday, reviewCap } from "../core/srs.js";
 import { illusions } from "../core/confidence.js";
 import { showSchedule } from "./schedule.js";
+import { clearResume, loadResume, pickResume } from "../core/resume.js";
+import { toHash } from "../router.js";
 
 function el(tag, text, className) {
   const node = document.createElement(tag);
@@ -81,6 +83,12 @@ function showOverview(root, ctx, today, now) {
   const meta = el("div", null, "today-meta");
   meta.append(el("p", `외운 문항 ${count}/126`), el("p", roundNote(ctx)));
   root.append(steps(today), meta);
+  const resume = pickResume(loadResume(), ctx.data.byId, ctx.state.cards, now);
+  if (resume) {
+    root.append(button(`이어서 공부하기 (${resume.i + 1}번째부터)`,
+      () => ctx.go("card", { queue: resume.queue.join(","), i: resume.i, mode: "review" }), "btn primary wide"));
+    return;
+  }
   const queue = [...today.due, ...today.started, ...today.fresh];
   if (queue.length) {
     const label = today.started.length || ctx.state.daily.newDone ? "이어서 공부하기" : "오늘 공부 시작";
@@ -191,6 +199,12 @@ function showSettings(root, ctx) {
 export function render(root, ctx) {
   root.replaceChildren();
   const now = ctx.now();
+  const resume = pickResume(loadResume(), ctx.data.byId, ctx.state.cards, now);
+  if (!resume) clearResume();
+  else if (!ctx.params?.home) {  // 틈틈이 공부: "오늘"을 누르면 멈춘 카드로 바로 간다(목록은 카드 위 "오늘 목록")
+    location.replace(toHash("card", { queue: resume.queue.join(","), i: resume.i, mode: "review" }));  // 뒤로 가기에 오늘 화면을 남기지 않음
+    return;
+  }
   const today = pickToday(ctx.data.items, ctx.state, now);
   showOverview(root, ctx, today, now);
   showIllusions(root, ctx);
